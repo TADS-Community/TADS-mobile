@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tads_app/src/core/constants/constants.dart';
 import 'package:tads_app/src/core/theme/app_theme.dart';
 import 'package:tads_app/src/presentation/pages/home/home_page.dart';
 
@@ -12,6 +13,7 @@ class TadsApp extends StatelessWidget {
       darkTheme: AppTheme.dark,
       themeMode: ThemeMode.system,
       debugShowCheckedModeBanner: false,
+      navigatorKey: AppConstants.navigatorKey,
       home: const HomePage(),
     );
   }
