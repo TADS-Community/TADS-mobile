@@ -1,10 +1,28 @@
 import 'package:flutter/material.dart';
-import 'package:tads_app/src/presentation/pages/main_tabs/create/create_tab.dart';
+import 'package:tads_app/src/presentation/pages/main_tabs/add/add_tab.dart';
 import 'package:tads_app/src/presentation/pages/main_tabs/main/main_tab.dart';
 import 'package:tads_app/src/presentation/pages/main_tabs/profile/profile_tab.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
+  late TabController _controller;
+  int _currentIndex = 0;
+
+  @override
+  void initState() {
+    _controller = TabController(length: 3, vsync: this);
+    _controller.addListener(onTabChange);
+
+    super.initState();
+  }
+
+  void onTabChange() => setState(() => _currentIndex = _controller.index);
 
   @override
   Widget build(BuildContext context) {
@@ -12,36 +30,33 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         title: const Text("TADS - Let's donate"),
       ),
-      body: AnimatedSwitcher(
-        duration: const Duration(milliseconds: 140),
-        child: IndexedStack(
-          index: 0,
-          children: const [
-            MainTab(),
-            CreateTab(),
-            ProfileTab(),
-          ],
-        ),
+      body: TabBarView(
+        controller: _controller,
+        physics: const NeverScrollableScrollPhysics(),
+        children: const [
+          MainTab(),
+          AddTab(),
+          ProfileTab(),
+        ],
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        showSelectedLabels: false,
-        showUnselectedLabels: false,
-        onTap: (index) {},
-        items: const [
-          BottomNavigationBarItem(
-            label: 'Main',
-            icon: Icon(Icons.home_outlined),
-            activeIcon: Icon(Icons.home),
+      bottomNavigationBar: NavigationBar(
+        labelBehavior: NavigationDestinationLabelBehavior.alwaysShow,
+        onDestinationSelected: (index) {
+          _controller.animateTo(index);
+        },
+        selectedIndex: _currentIndex,
+        destinations: const [
+          NavigationDestination(
+            icon: Icon(Icons.home),
+            label: 'Home',
           ),
-          BottomNavigationBarItem(
-            label: 'Create',
-            icon: Icon(Icons.add_box_outlined),
-            activeIcon: Icon(Icons.add_box),
+          NavigationDestination(
+            icon: Icon(Icons.add_box),
+            label: 'Add',
           ),
-          BottomNavigationBarItem(
+          NavigationDestination(
+            icon: Icon(Icons.person),
             label: 'Profile',
-            icon: Icon(Icons.person_outline),
-            activeIcon: Icon(Icons.add_box),
           ),
         ],
       ),

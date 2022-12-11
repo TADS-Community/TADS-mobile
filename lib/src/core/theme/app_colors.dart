@@ -7,7 +7,7 @@ class AppColors {
 
   static const white = _white;
   static const blue = _blue;
-  static const appBarColor = _greyX;
+  static const appBarColorDark = _greyX;
   static const scaffoldBackground = _grey850;
   static const teal = _tealAccent200;
 

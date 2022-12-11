@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:tads_app/src/core/theme/app_colors.dart';
 
 class AppTheme {
   AppTheme._();
@@ -9,8 +8,15 @@ class AppTheme {
   static final ThemeData light = ThemeData(
     useMaterial3: true,
     brightness: Brightness.light,
-    textTheme: GoogleFonts.spaceMonoTextTheme(),
-    bottomNavigationBarTheme: const BottomNavigationBarThemeData(elevation: 2),
+    appBarTheme: AppBarTheme(
+      color: Colors.blue,
+      titleTextStyle: GoogleFonts.spaceMono(
+        color: Colors.white,
+        fontSize: 20,
+      ),
+    ),
+    textTheme: GoogleFonts.spaceMonoTextTheme(
+        ThemeData(brightness: Brightness.light).textTheme),
     cupertinoOverrideTheme:
         const CupertinoThemeData(brightness: Brightness.light),
   );
@@ -18,11 +24,8 @@ class AppTheme {
   static final ThemeData dark = ThemeData(
     useMaterial3: true,
     brightness: Brightness.dark,
-    textTheme: GoogleFonts.spaceMonoTextTheme(),
-    bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-      elevation: 2,
-      backgroundColor: AppColors.appBarColor,
-    ),
+    textTheme: GoogleFonts.spaceMonoTextTheme(
+        ThemeData(brightness: Brightness.dark).textTheme),
     cupertinoOverrideTheme:
         const CupertinoThemeData(brightness: Brightness.dark),
   );
