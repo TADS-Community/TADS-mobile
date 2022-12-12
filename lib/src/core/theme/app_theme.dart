@@ -8,6 +8,7 @@ class AppTheme {
   static final ThemeData light = ThemeData(
     useMaterial3: true,
     brightness: Brightness.light,
+    scaffoldBackgroundColor: Colors.white70,
     appBarTheme: AppBarTheme(
       color: Colors.blue,
       titleTextStyle: GoogleFonts.spaceMono(

@@ -28,7 +28,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("TADS - Let's donate"),
+        title: const Text("TADS"),
       ),
       body: TabBarView(
         controller: _controller,
