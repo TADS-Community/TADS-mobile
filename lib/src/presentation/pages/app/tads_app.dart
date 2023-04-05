@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:tads_app/src/core/constants/constants.dart';
 import 'package:tads_app/src/core/routes/app_routes.dart';
@@ -27,8 +28,11 @@ class _TadsAppState extends State<TadsApp> {
       darkTheme: AppTheme.dark,
       themeMode: ThemeMode.dark,
       debugShowCheckedModeBanner: false,
-      title: AppConstants.appName,
-      routerConfig: AppRoutes.router(!_authenticated),
+      title: AppConsts.appName,
+      supportedLocales: context.supportedLocales,
+      localizationsDelegates: context.localizationDelegates,
+      locale: context.locale,
+      routerConfig: AppRoutes.router(_authenticated),
     );
   }
 }

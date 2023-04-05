@@ -14,7 +14,7 @@ part 'api_client.g.dart';
 //   darkTheme: false,
 // );
 
-@RestApi(baseUrl: AppConstants.BASE_URL_PROD)
+@RestApi(baseUrl: AppConsts.BASE_URL_PROD)
 abstract class ApiClient {
   static get getDio {
     Dio dio = Dio(BaseOptions(
@@ -58,7 +58,7 @@ abstract class ApiClient {
 
   static ApiClient? _apiClient;
 
-  static ApiClient getInstance({String baseUrl = AppConstants.BASE_URL_PROD}) {
+  static ApiClient getInstance({String baseUrl = AppConsts.BASE_URL_PROD}) {
     if (_apiClient != null) {
       return _apiClient!;
     } else {

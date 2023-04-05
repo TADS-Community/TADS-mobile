@@ -49,7 +49,7 @@ class AppTheme {
       padding: const EdgeInsets.symmetric(horizontal: 16),
       shape: const RoundedRectangleBorder(
         borderRadius:
-            BorderRadius.all(Radius.circular(AppConstants.kBorderRadius)),
+            BorderRadius.all(Radius.circular(AppConsts.kBorderRadius)),
       ),
     )),
     outlinedButtonTheme: OutlinedButtonThemeData(
@@ -84,7 +84,7 @@ class AppTheme {
       padding: const EdgeInsets.symmetric(horizontal: 16),
       shape: const RoundedRectangleBorder(
         borderRadius:
-            BorderRadius.all(Radius.circular(AppConstants.kBorderRadius)),
+            BorderRadius.all(Radius.circular(AppConsts.kBorderRadius)),
       ),
     )),
     outlinedButtonTheme: OutlinedButtonThemeData(

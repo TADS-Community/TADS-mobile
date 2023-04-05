@@ -2,8 +2,8 @@
 
 import 'package:flutter/material.dart';
 
-class AppConstants {
-  AppConstants._();
+class AppConsts {
+  AppConsts._();
 
   static final GlobalKey<NavigatorState> navigatorKey =
   GlobalKey<NavigatorState>(
@@ -14,4 +14,6 @@ class AppConstants {
   static const BASE_URL_PROD = '';
   static const kBorderRadius = 2.0;
   static const appName = 'TADS';
+  static const uz = 'uz';
+  static const en = 'en';
 }
