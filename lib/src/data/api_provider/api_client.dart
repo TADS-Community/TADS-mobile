@@ -20,7 +20,7 @@ abstract class ApiClient {
     Dio dio = Dio(BaseOptions(
       followRedirects: false,
     ));
-    if (LocalSource.getChuck()) {
+    if (LocalSource.getChuck) {
       // dio.interceptors.add(alice.getDioInterceptor());
     }
     if (kDebugMode) {
@@ -72,8 +72,8 @@ abstract class ApiClient {
         receiveTimeout: const Duration(seconds: 30),
         connectTimeout: const Duration(seconds: 30));
     dio.options.headers = {
-      "Authorization": LocalSource.getAccessToken(),
-      "Accept-Language": LocalSource.getLocale(),
+      "Authorization": LocalSource.getAccessToken,
+      "Accept-Language": LocalSource.getLocale,
     };
 
     return _ApiClient(dio, baseUrl: baseUrl);

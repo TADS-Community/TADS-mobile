@@ -1,9 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:tads_app/src/core/constants/constants.dart';
+import 'app_colors.dart';
 
 class AppTheme {
   AppTheme._();
+
+  static const pageTransitionsTheme = PageTransitionsTheme(
+      builders: {TargetPlatform.android: ZoomPageTransitionsBuilder()});
 
   static final ThemeData light = ThemeData(
     useMaterial3: true,
@@ -20,6 +25,40 @@ class AppTheme {
         ThemeData(brightness: Brightness.light).textTheme),
     cupertinoOverrideTheme:
         const CupertinoThemeData(brightness: Brightness.light),
+    tooltipTheme: const TooltipThemeData(
+      waitDuration: Duration(milliseconds: 500),
+    ),
+    pageTransitionsTheme: pageTransitionsTheme,
+    primaryColor: AppColors.accentColor,
+    indicatorColor: AppColors.accentColor,
+    textSelectionTheme: const TextSelectionThemeData(
+      selectionColor: AppColors.accentColor,
+    ),
+    fontFamily: GoogleFonts.spaceMono().fontFamily,
+    canvasColor: Colors.white,
+    cardColor: Colors.white,
+    primaryColorDark: AppColors.accentColor,
+    primaryColorLight: AppColors.accentColor,
+    tabBarTheme: TabBarTheme(
+      labelColor: Colors.white,
+      unselectedLabelColor: Colors.black.withOpacity(.65),
+    ),
+    textButtonTheme: TextButtonThemeData(
+        style: TextButton.styleFrom(
+      minimumSize: const Size(88, 36),
+      padding: const EdgeInsets.symmetric(horizontal: 16),
+      shape: const RoundedRectangleBorder(
+        borderRadius:
+            BorderRadius.all(Radius.circular(AppConstants.kBorderRadius)),
+      ),
+    )),
+    outlinedButtonTheme: OutlinedButtonThemeData(
+        style: OutlinedButton.styleFrom(foregroundColor: Colors.white)),
+    colorScheme: ColorScheme.fromSwatch().copyWith(
+      secondary: AppColors.accentColor,
+      background: Colors.white,
+    ),
+    bottomAppBarTheme: const BottomAppBarTheme(color: Colors.white),
   );
 
   static final ThemeData dark = ThemeData(
@@ -29,5 +68,34 @@ class AppTheme {
         ThemeData(brightness: Brightness.dark).textTheme),
     cupertinoOverrideTheme:
         const CupertinoThemeData(brightness: Brightness.dark),
+    tooltipTheme: const TooltipThemeData(
+      waitDuration: Duration(milliseconds: 500),
+    ),
+    pageTransitionsTheme: pageTransitionsTheme,
+    indicatorColor: AppColors.accentColor,
+    textSelectionTheme: const TextSelectionThemeData(
+      selectionHandleColor: AppColors.accentColor,
+    ),
+    fontFamily: GoogleFonts.spaceMono().fontFamily,
+    canvasColor: Colors.black,
+    cardColor: const Color(0xFF1B1C1E),
+    primaryColorDark: Colors.black,
+    textButtonTheme: TextButtonThemeData(
+        style: TextButton.styleFrom(
+      minimumSize: const Size(88, 36),
+      padding: const EdgeInsets.symmetric(horizontal: 16),
+      shape: const RoundedRectangleBorder(
+        borderRadius:
+            BorderRadius.all(Radius.circular(AppConstants.kBorderRadius)),
+      ),
+    )),
+    outlinedButtonTheme: OutlinedButtonThemeData(
+        style: OutlinedButton.styleFrom(foregroundColor: Colors.white)),
+    colorScheme: const ColorScheme.dark().copyWith(
+      secondary: AppColors.accentColor,
+      primary: AppColors.accentColor,
+      background: Colors.black,
+    ),
+    bottomAppBarTheme: const BottomAppBarTheme(color: Color(0xFF1B1C1E)),
   );
 }

@@ -2,12 +2,12 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tads_app/src/data/local_source/source_keys.dart';
 
 class LocalSource {
-  LocalSource._();
   static LocalSource? _instance;
   static SharedPreferences? _localStorage;
+
   static Future<LocalSource> getInstance() async {
     if (_instance == null) {
-      final secureStorage = LocalSource._();
+      final secureStorage = LocalSource();
       await secureStorage._init();
       _instance = secureStorage;
     }
@@ -30,20 +30,14 @@ class LocalSource {
     await _localStorage?.setString(SourceKeys.accessToken, value);
   }
 
-  static getLocale() async {
-    return _localStorage?.getString(SourceKeys.locale) ?? 'ru';
-  }
+  static String get getLocale => _localStorage?.getString(SourceKeys.locale) ?? 'ru';
 
-  static getChuck() {
-    return _localStorage?.getBool(SourceKeys.chuck) ?? false;
-  }
+  static bool get getChuck => _localStorage?.getBool(SourceKeys.chuck) ?? false;
 
-  static getAccessToken() {
-    return _localStorage?.getBool(SourceKeys.accessToken) ?? false;
-  }
+  static String get getAccessToken =>
+      _localStorage?.getString(SourceKeys.accessToken) ?? '';
 
   static Future<void> clearProfile() async {
     await _localStorage?.remove(SourceKeys.accessToken);
   }
-
 }
