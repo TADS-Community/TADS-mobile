@@ -68,7 +68,9 @@ abstract class ApiClient {
   }
 
   factory ApiClient(Dio dio, CancelToken cancelToken, String baseUrl) {
-    dio.options = BaseOptions(receiveTimeout: 30000, connectTimeout: 30000);
+    dio.options = BaseOptions(
+        receiveTimeout: const Duration(seconds: 30),
+        connectTimeout: const Duration(seconds: 30));
     dio.options.headers = {
       "Authorization": LocalSource.getAccessToken(),
       "Accept-Language": LocalSource.getLocale(),
