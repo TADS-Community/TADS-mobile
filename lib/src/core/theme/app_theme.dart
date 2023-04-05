@@ -54,16 +54,14 @@ class AppTheme {
     )),
     outlinedButtonTheme: OutlinedButtonThemeData(
         style: OutlinedButton.styleFrom(foregroundColor: Colors.white)),
-    colorScheme: ColorScheme.fromSwatch().copyWith(
-      secondary: AppColors.accentColor,
-      background: Colors.white,
-    ),
+    colorScheme: const ColorScheme.light(),
     bottomAppBarTheme: const BottomAppBarTheme(color: Colors.white),
   );
 
   static final ThemeData dark = ThemeData(
     useMaterial3: true,
     brightness: Brightness.dark,
+    scaffoldBackgroundColor: Colors.grey.shade900,
     textTheme: GoogleFonts.spaceMonoTextTheme(
         ThemeData(brightness: Brightness.dark).textTheme),
     cupertinoOverrideTheme:
@@ -91,11 +89,7 @@ class AppTheme {
     )),
     outlinedButtonTheme: OutlinedButtonThemeData(
         style: OutlinedButton.styleFrom(foregroundColor: Colors.white)),
-    colorScheme: const ColorScheme.dark().copyWith(
-      secondary: AppColors.accentColor,
-      primary: AppColors.accentColor,
-      background: Colors.black,
-    ),
+    colorScheme: const ColorScheme.dark(),
     bottomAppBarTheme: const BottomAppBarTheme(color: Color(0xFF1B1C1E)),
   );
 }

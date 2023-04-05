@@ -25,7 +25,7 @@ class DonationItem extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(8),
-          color: Colors.white,
+          color: Theme.of(context).colorScheme.background,
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,

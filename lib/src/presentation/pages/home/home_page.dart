@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:tads_app/src/presentation/pages/main_tabs/main/main_tab.dart';
-import 'package:tads_app/src/presentation/pages/main_tabs/profile/profile_tab.dart';
-import 'package:tads_app/src/presentation/pages/main_tabs/search/search_tab.dart';
+import 'package:tads_app/src/presentation/pages/bottom_bar_tabs/main/main_tab.dart';
+import 'package:tads_app/src/presentation/pages/bottom_bar_tabs/profile/profile_tab.dart';
+import 'package:tads_app/src/presentation/pages/bottom_bar_tabs/search/search_tab.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);

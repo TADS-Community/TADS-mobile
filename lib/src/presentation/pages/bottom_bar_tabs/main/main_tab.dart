@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:tads_app/src/core/routes/app_routes.dart';
-import 'package:tads_app/src/presentation/pages/main_tabs/main/widgets/donation_item.dart';
+import 'package:tads_app/src/presentation/pages/bottom_bar_tabs/main/widgets/donation_item.dart';
 
 class MainTab extends StatelessWidget {
   const MainTab({Key? key}) : super(key: key);
