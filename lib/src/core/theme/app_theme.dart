@@ -81,6 +81,7 @@ class AppTheme {
     canvasColor: Colors.black,
     cardColor: const Color(0xFF1B1C1E),
     primaryColorDark: Colors.black,
+
     outlinedButtonTheme: OutlinedButtonThemeData(
         style: OutlinedButton.styleFrom(foregroundColor: Colors.white)),
     colorScheme: const ColorScheme.dark(),
@@ -102,6 +103,17 @@ class AppTheme {
         borderSide: BorderSide(color: Colors.red),
       ),
       errorStyle: const TextStyle(color: Colors.red),
+    ),
+    textButtonTheme: TextButtonThemeData(
+      style: TextButton.styleFrom(
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(Radius.circular(kBorderRadius)),
+        ),
+        backgroundColor: Colors.greenAccent,
+        minimumSize: const Size.fromHeight(50),
+        textStyle: GoogleFonts.spaceMonoTextTheme().titleMedium,
+        foregroundColor: Colors.black,
+      ),
     ),
   );
 }
