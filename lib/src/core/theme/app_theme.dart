@@ -13,7 +13,7 @@ class AppTheme {
   static final ThemeData light = ThemeData(
     useMaterial3: true,
     brightness: Brightness.light,
-    scaffoldBackgroundColor: Colors.white70,
+    scaffoldBackgroundColor: AppColors.backgroundColorLight,
     appBarTheme: AppBarTheme(
       color: Colors.blue,
       titleTextStyle: GoogleFonts.spaceMono(
@@ -29,39 +29,45 @@ class AppTheme {
       waitDuration: Duration(milliseconds: 500),
     ),
     pageTransitionsTheme: pageTransitionsTheme,
-    primaryColor: AppColors.accentColor,
-    indicatorColor: AppColors.accentColor,
-    textSelectionTheme: const TextSelectionThemeData(
-      selectionColor: AppColors.accentColor,
-    ),
+    primaryColor: Colors.blueAccent,
+    indicatorColor: Colors.blueAccent,
     fontFamily: GoogleFonts.spaceMono().fontFamily,
     canvasColor: Colors.white,
     cardColor: Colors.white,
-    primaryColorDark: AppColors.accentColor,
-    primaryColorLight: AppColors.accentColor,
+    primaryColorDark: Colors.blueAccent,
+    primaryColorLight: Colors.blueAccent,
     tabBarTheme: TabBarTheme(
       labelColor: Colors.white,
       unselectedLabelColor: Colors.black.withOpacity(.65),
     ),
-    textButtonTheme: TextButtonThemeData(
-        style: TextButton.styleFrom(
-      minimumSize: const Size(88, 36),
-      padding: const EdgeInsets.symmetric(horizontal: 16),
-      shape: const RoundedRectangleBorder(
-        borderRadius:
-            BorderRadius.all(Radius.circular(AppConsts.kBorderRadius)),
-      ),
-    )),
     outlinedButtonTheme: OutlinedButtonThemeData(
         style: OutlinedButton.styleFrom(foregroundColor: Colors.white)),
     colorScheme: const ColorScheme.light(),
     bottomAppBarTheme: const BottomAppBarTheme(color: Colors.white),
+    textSelectionTheme: const TextSelectionThemeData(
+        selectionHandleColor: Colors.blue,
+        selectionColor: Colors.blue,
+        cursorColor: Colors.blue),
+    inputDecorationTheme: InputDecorationTheme(
+      focusColor: Colors.blue,
+      focusedBorder: const OutlineInputBorder(
+        borderSide: BorderSide(color: Colors.blue),
+      ),
+      border: OutlineInputBorder(
+        borderSide: const BorderSide(color: Colors.black),
+        borderRadius: BorderRadius.circular(kBorderRadius),
+      ),
+      errorBorder: const OutlineInputBorder(
+        borderSide: BorderSide(color: Colors.red),
+      ),
+      errorStyle: const TextStyle(color: Colors.red),
+    ),
   );
 
   static final ThemeData dark = ThemeData(
     useMaterial3: true,
     brightness: Brightness.dark,
-    scaffoldBackgroundColor: Colors.grey.shade900,
+    scaffoldBackgroundColor: AppColors.backgroundColorNight,
     textTheme: GoogleFonts.spaceMonoTextTheme(
         ThemeData(brightness: Brightness.dark).textTheme),
     cupertinoOverrideTheme:
@@ -70,26 +76,32 @@ class AppTheme {
       waitDuration: Duration(milliseconds: 500),
     ),
     pageTransitionsTheme: pageTransitionsTheme,
-    indicatorColor: AppColors.accentColor,
-    textSelectionTheme: const TextSelectionThemeData(
-      selectionHandleColor: AppColors.accentColor,
-    ),
+    indicatorColor: Colors.blueAccent,
     fontFamily: GoogleFonts.spaceMono().fontFamily,
     canvasColor: Colors.black,
     cardColor: const Color(0xFF1B1C1E),
     primaryColorDark: Colors.black,
-    textButtonTheme: TextButtonThemeData(
-        style: TextButton.styleFrom(
-      minimumSize: const Size(88, 36),
-      padding: const EdgeInsets.symmetric(horizontal: 16),
-      shape: const RoundedRectangleBorder(
-        borderRadius:
-            BorderRadius.all(Radius.circular(AppConsts.kBorderRadius)),
-      ),
-    )),
     outlinedButtonTheme: OutlinedButtonThemeData(
         style: OutlinedButton.styleFrom(foregroundColor: Colors.white)),
     colorScheme: const ColorScheme.dark(),
     bottomAppBarTheme: const BottomAppBarTheme(color: Color(0xFF1B1C1E)),
+    textSelectionTheme: const TextSelectionThemeData(
+        selectionHandleColor: Colors.green,
+        selectionColor: Colors.green,
+        cursorColor: Colors.greenAccent),
+    inputDecorationTheme: InputDecorationTheme(
+      focusColor: Colors.green,
+      focusedBorder: const OutlineInputBorder(
+        borderSide: BorderSide(color: Colors.greenAccent),
+      ),
+      border: OutlineInputBorder(
+        borderSide: const BorderSide(color: Colors.white),
+        borderRadius: BorderRadius.circular(kBorderRadius),
+      ),
+      errorBorder: const OutlineInputBorder(
+        borderSide: BorderSide(color: Colors.red),
+      ),
+      errorStyle: const TextStyle(color: Colors.red),
+    ),
   );
 }

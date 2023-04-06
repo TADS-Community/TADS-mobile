@@ -13,12 +13,12 @@ void main() async {
   runApp(
     EasyLocalization(
       supportedLocales: const [
-        Locale(AppConsts.uz),
-        Locale(AppConsts.en),
+        Locale(uz),
+        Locale(en),
       ],
       path: 'assets/translations',
-      fallbackLocale: const Locale(AppConsts.uz),
-      startLocale: const Locale(AppConsts.uz),
+      fallbackLocale: const Locale(uz),
+      startLocale: const Locale(uz),
       assetLoader: const CodegenLoader(),
       child: const TadsApp(),
     ),
