@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tads_app/src/core/constants/constants.dart';
+import 'package:tads_app/src/config/constants/constants.dart';
 import 'package:tads_app/src/presentation/pages/bottom_bar_tabs/main/main_tab.dart';
 import 'package:tads_app/src/presentation/pages/bottom_bar_tabs/profile/profile_tab.dart';
 import 'package:tads_app/src/presentation/pages/bottom_bar_tabs/search/search_tab.dart';

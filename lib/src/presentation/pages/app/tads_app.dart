@@ -1,10 +1,10 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:keyboard_dismisser/keyboard_dismisser.dart';
-import 'package:tads_app/src/core/constants/constants.dart';
-import 'package:tads_app/src/core/routes/app_routes.dart';
-import 'package:tads_app/src/core/theme/app_theme.dart';
-import 'package:tads_app/src/data/local_source/local_source.dart';
+import 'package:tads_app/src/config/constants/constants.dart';
+import 'package:tads_app/src/config/routes/app_routes.dart';
+import 'package:tads_app/src/config/theme/app_theme.dart';
+import 'package:tads_app/src/data/local_source/local_storage.dart';
 
 class TadsApp extends StatefulWidget {
   const TadsApp({Key? key}) : super(key: key);
@@ -19,7 +19,7 @@ class _TadsAppState extends State<TadsApp> {
   @override
   void initState() {
     super.initState();
-    _authenticated = LocalSource.getAccessToken.isNotEmpty;
+    _authenticated = LocalStorage.getAccessToken.isNotEmpty;
   }
 
   @override

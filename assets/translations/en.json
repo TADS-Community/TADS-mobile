@@ -1,4 +1,6 @@
 {
-  "login" : "Login",
-  "registration" : "Registration"
+  "login": "Login",
+  "registration": "Registration",
+  "length_input": "Length must be larger than {}",
+  "password": "Password"
 }

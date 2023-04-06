@@ -16,11 +16,15 @@ class CodegenLoader extends AssetLoader{
 
   static const Map<String,dynamic> en = {
   "login": "Login",
-  "registration": "Registration"
+  "registration": "Registration",
+  "length_input": "Length must be larger than {}",
+  "password": "Password"
 };
 static const Map<String,dynamic> uz = {
   "login": "Kirish",
-  "registration": "Ro'yxatdan o'tish"
+  "registration": "Ro'yxatdan o'tish",
+  "length_input": "{} tadan ko'p belgi bo'lsin",
+  "password": "Parol"
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"en": en, "uz": uz};
 }

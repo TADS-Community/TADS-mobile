@@ -3,5 +3,7 @@
 abstract class  LocaleKeys {
   static const login = 'login';
   static const registration = 'registration';
+  static const length_input = 'length_input';
+  static const password = 'password';
 
 }

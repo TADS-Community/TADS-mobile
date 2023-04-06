@@ -1,4 +1,6 @@
 {
-  "login" : "Kirish",
-  "registration" : "Ro'yxatdan o'tish"
+  "login": "Kirish",
+  "registration": "Ro'yxatdan o'tish",
+  "length_input": "{} tadan ko'p belgi bo'lsin",
+  "password": "Parol"
 }

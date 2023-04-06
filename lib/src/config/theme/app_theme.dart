@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:tads_app/src/core/constants/constants.dart';
+import 'package:tads_app/src/config/constants/constants.dart';
 import 'app_colors.dart';
 
 class AppTheme {
@@ -13,7 +13,7 @@ class AppTheme {
   static final ThemeData light = ThemeData(
     useMaterial3: true,
     brightness: Brightness.light,
-    scaffoldBackgroundColor: AppColors.backgroundColorLight,
+    scaffoldBackgroundColor: AppColors.white,
     appBarTheme: AppBarTheme(
       color: Colors.blue,
       titleTextStyle: GoogleFonts.spaceMono(
@@ -40,8 +40,6 @@ class AppTheme {
       labelColor: Colors.white,
       unselectedLabelColor: Colors.black.withOpacity(.65),
     ),
-    outlinedButtonTheme: OutlinedButtonThemeData(
-        style: OutlinedButton.styleFrom(foregroundColor: Colors.white)),
     colorScheme: const ColorScheme.light(),
     bottomAppBarTheme: const BottomAppBarTheme(color: Colors.white),
     textSelectionTheme: const TextSelectionThemeData(
@@ -62,30 +60,45 @@ class AppTheme {
       ),
       errorStyle: const TextStyle(color: Colors.red),
     ),
+    textButtonTheme: TextButtonThemeData(
+      style: TextButton.styleFrom(
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(Radius.circular(kBorderRadius)),
+        ),
+        backgroundColor: Colors.blue,
+        minimumSize: const Size.fromHeight(50),
+        textStyle: GoogleFonts.spaceMonoTextTheme().titleMedium,
+        foregroundColor: Colors.white,
+      ),
+    ),
   );
 
   static final ThemeData dark = ThemeData(
     useMaterial3: true,
     brightness: Brightness.dark,
-    scaffoldBackgroundColor: AppColors.backgroundColorNight,
+    scaffoldBackgroundColor: const Color(0xff1B1B1B),
     textTheme: GoogleFonts.spaceMonoTextTheme(
         ThemeData(brightness: Brightness.dark).textTheme),
     cupertinoOverrideTheme:
         const CupertinoThemeData(brightness: Brightness.dark),
-    tooltipTheme: const TooltipThemeData(
-      waitDuration: Duration(milliseconds: 500),
+    appBarTheme: AppBarTheme(
+      color: const Color(0xff111111),
+      titleTextStyle: GoogleFonts.spaceMono(
+        color: Colors.white,
+        fontSize: 20,
+      ),
     ),
     pageTransitionsTheme: pageTransitionsTheme,
-    indicatorColor: Colors.blueAccent,
     fontFamily: GoogleFonts.spaceMono().fontFamily,
-    canvasColor: Colors.black,
-    cardColor: const Color(0xFF1B1C1E),
-    primaryColorDark: Colors.black,
-
+    cardColor: AppColors.classicDark2,
+    primaryColor: const Color(0xff1B1B1B),
+    primaryColorDark: const Color(0xff111111),
+    primaryColorLight: const Color(0xff2D2D2D),
     outlinedButtonTheme: OutlinedButtonThemeData(
         style: OutlinedButton.styleFrom(foregroundColor: Colors.white)),
     colorScheme: const ColorScheme.dark(),
-    bottomAppBarTheme: const BottomAppBarTheme(color: Color(0xFF1B1C1E)),
+    navigationBarTheme:
+        const NavigationBarThemeData(backgroundColor: Color(0xff111111)),
     textSelectionTheme: const TextSelectionThemeData(
         selectionHandleColor: Colors.green,
         selectionColor: Colors.green,
