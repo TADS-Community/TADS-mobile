@@ -91,6 +91,7 @@ class _LoginPageState extends State<LoginPage> {
                           ScaffoldMessenger.of(context).showSnackBar(
                               const SnackBar(content: Text('Okay')));
                         }
+                        context.pop();
                       },
                       child: Text(LocaleKeys.registration.tr()),
                     ),
@@ -102,5 +103,11 @@ class _LoginPageState extends State<LoginPage> {
         },
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    bloc.dispose();
+    super.dispose();
   }
 }

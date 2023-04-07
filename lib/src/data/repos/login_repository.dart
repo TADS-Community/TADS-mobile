@@ -24,4 +24,8 @@ class LoginRepository {
       return Left(DioFailure());
     }
   }
+
+  void dispose() {
+    LoginClient.removeLoginClient();
+  }
 }

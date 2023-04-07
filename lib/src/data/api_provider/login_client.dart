@@ -14,9 +14,7 @@ abstract class LoginClient {
   static LoginClient? _loginClient;
 
   static LoginClient getInstance({String baseUrl = AppConsts.BASE_URL_PROD}) {
-    print('login client');
     if (_loginClient != null) {
-      print('not null');
       return _loginClient!;
     } else {
       _loginClient = LoginClient(dio, baseUrl);
@@ -32,7 +30,7 @@ abstract class LoginClient {
     _loginClient = null;
   }
 
-  @GET("donations/")
+  @GET("campaigns/")
   Future<List<CampaignModel>> getCampaignList(
     @Query('limit') int? limit,
     @Query('page') int? page,

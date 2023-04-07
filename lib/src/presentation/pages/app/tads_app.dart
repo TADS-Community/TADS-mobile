@@ -35,7 +35,7 @@ class _TadsAppState extends State<TadsApp> {
         supportedLocales: context.supportedLocales,
         localizationsDelegates: context.localizationDelegates,
         locale: context.locale,
-        routerConfig: AppRoutes.router(_authenticated),
+        routerConfig: AppRoutes.router(!_authenticated),
       ),
     );
   }

@@ -23,4 +23,8 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
 
     }
   }
+
+  void dispose() {
+    repo.dispose();
+  }
 }

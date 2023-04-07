@@ -39,7 +39,7 @@ class _LoginClient implements LoginClient {
     )
             .compose(
               _dio.options,
-              'donations/',
+              'campaigns/',
               queryParameters: queryParameters,
               data: _data,
             )
