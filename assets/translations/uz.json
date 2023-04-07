@@ -2,5 +2,8 @@
   "login": "Kirish",
   "registration": "Ro'yxatdan o'tish",
   "length_input": "{} tadan ko'p belgi bo'lsin",
-  "password": "Parol"
+  "password": "Parol",
+  "enter": "Kirish",
+  "generated_id": "Siz uchun ID",
+  "error_generating": "Yaratish vaqtida xatolik yuz berdi\nYangilash tugmasini bosing"
 }

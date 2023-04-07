@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:tads_app/src/config/routes/app_routes.dart';
 import 'package:tads_app/src/presentation/pages/bottom_bar_tabs/main/widgets/donation_item.dart';
 
@@ -14,7 +13,7 @@ class MainTab extends StatelessWidget {
       itemBuilder: (_, index) {
         return DonationItem(
           onTap: () {
-            context.pushNamed(AppRoutes.login);
+            Navigator.of(context).pushNamed(AppRoutes.login);
           },
           cacheKey: 'cacheKey',
           imageUrl: 'https://cdn.uzd.udevs.io/uzdigital/images/ec80c248-ddb8-4b68-98b1-0d59e9a1acdd.jpg',

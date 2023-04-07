@@ -26,7 +26,7 @@ class _TadsAppState extends State<TadsApp> {
   Widget build(BuildContext context) {
     return KeyboardDismisser(
       gestures: const [GestureType.onTap],
-      child: MaterialApp.router(
+      child: MaterialApp(
         theme: AppTheme.light,
         darkTheme: AppTheme.dark,
         themeMode: ThemeMode.system,
@@ -35,7 +35,8 @@ class _TadsAppState extends State<TadsApp> {
         supportedLocales: context.supportedLocales,
         localizationsDelegates: context.localizationDelegates,
         locale: context.locale,
-        routerConfig: AppRoutes.router(!_authenticated),
+        initialRoute: _authenticated ? AppRoutes.home : AppRoutes.login,
+        routes: AppRoutes.routes,
       ),
     );
   }

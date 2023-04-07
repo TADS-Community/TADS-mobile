@@ -128,5 +128,6 @@ class AppTheme {
         foregroundColor: Colors.black,
       ),
     ),
+    progressIndicatorTheme: const ProgressIndicatorThemeData(color: Colors.greenAccent)
   );
 }

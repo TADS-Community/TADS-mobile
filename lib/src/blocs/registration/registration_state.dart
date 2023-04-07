@@ -1,10 +1,23 @@
 part of 'registration_bloc.dart';
 
-abstract class RegistrationState extends Equatable {
-  const RegistrationState();
-}
+class RegistrationState extends Equatable {
+  final String? id;
+  final FormzSubmissionStatus statusID;
 
-class RegistrationInitial extends RegistrationState {
+  const RegistrationState({
+    this.id,
+    this.statusID = FormzSubmissionStatus.initial,
+  });
+
+  RegistrationState copWith({
+    String? id,
+    FormzSubmissionStatus? statusID,
+  }) =>
+      RegistrationState(
+        id: id ?? this.id,
+        statusID: statusID ?? this.statusID,
+      );
+
   @override
-  List<Object> get props => [];
+  List<Object?> get props => [id, statusID];
 }
