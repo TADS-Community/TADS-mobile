@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tads_app/src/presentation/pages/home/home_page.dart';
-import 'package:tads_app/src/presentation/pages/login/login_page.dart';
-import 'package:tads_app/src/presentation/pages/registration/registration_page.dart';
+import 'package:tads_app/src/features/login/presentation/pages/login_page.dart';
+import 'package:tads_app/src/features/registration/presentation/pages/registration_page.dart';
 
 abstract class AppRoutes {
   static const home = '/home';

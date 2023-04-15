@@ -18,13 +18,19 @@ class CodegenLoader extends AssetLoader{
   "login": "Login",
   "registration": "Registration",
   "length_input": "Length must be larger than {}",
-  "password": "Password"
+  "password": "Password",
+  "enter": "Enter",
+  "generated_id": "Your generated ID",
+  "error_generating": "Error occurred while generating\nHit the refresh button"
 };
 static const Map<String,dynamic> uz = {
   "login": "Kirish",
   "registration": "Ro'yxatdan o'tish",
   "length_input": "{} tadan ko'p belgi bo'lsin",
-  "password": "Parol"
+  "password": "Parol",
+  "enter": "Kirish",
+  "generated_id": "Siz uchun ID",
+  "error_generating": "Yaratish vaqtida xatolik yuz berdi\nYangilash tugmasini bosing"
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"en": en, "uz": uz};
 }

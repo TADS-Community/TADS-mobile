@@ -4,7 +4,7 @@ import 'package:tads_app/generated/codegen_loader.g.dart';
 import 'package:tads_app/src/config/constants/constants.dart';
 import 'package:tads_app/src/core/get_it/service_locator.dart';
 import 'package:tads_app/src/core/local_source/local_storage.dart';
-import 'package:tads_app/src/presentation/pages/app/tads_app.dart';
+import 'package:tads_app/src/features/app/presentation/pages/tads_app.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

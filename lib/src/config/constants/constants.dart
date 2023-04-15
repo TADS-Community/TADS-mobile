@@ -10,8 +10,7 @@ class AppConsts {
     debugLabel: "TADS",
   );
 
-  static const BASE_URL_TEST = '';
-  static const BASE_URL_PROD = '';
+  static const BASE_URL_PROD = 'http://tads.mamajonov.uz/';
 }
 
 const appName = 'TADS';
