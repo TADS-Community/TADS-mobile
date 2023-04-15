@@ -1,10 +1,10 @@
 import 'package:dio/dio.dart';
+import 'package:tads_app/src/core/utils/either.dart';
 import 'package:tads_app/src/data/api_provider/exceptions/exceptions.dart';
 import 'package:tads_app/src/data/api_provider/exceptions/failures.dart';
 import 'package:tads_app/src/data/api_provider/login_client.dart';
 import 'package:tads_app/src/domain/entities/login/campaign_entity.dart';
 import 'package:tads_app/src/domain/repositories/login_repository.dart';
-import 'package:tads_app/src/utils/either.dart';
 
 class LoginRepoImpl implements LoginRepository {
   final LoginClient _dataSource = LoginClient.getInstance();

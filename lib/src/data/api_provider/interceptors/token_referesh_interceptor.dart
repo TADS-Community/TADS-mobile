@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:tads_app/src/utils/local_source/local_storage.dart';
+import 'package:tads_app/src/core/local_source/local_storage.dart';
 
 class CustomInterceptor implements Interceptor {
   final Dio dio;

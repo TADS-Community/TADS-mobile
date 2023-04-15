@@ -1,9 +1,9 @@
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
 import 'package:tads_app/src/config/constants/constants.dart';
+import 'package:tads_app/src/core/get_it/service_locator.dart';
 import 'package:tads_app/src/data/api_provider/base/dio_settings.dart';
 import 'package:tads_app/src/data/models/login/campaign_model.dart';
-import 'package:tads_app/src/utils/get_it/service_locator.dart';
 
 part 'login_client.g.dart';
 

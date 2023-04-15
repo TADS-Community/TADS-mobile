@@ -1,5 +1,5 @@
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:tads_app/src/utils/local_source/storage_keys.dart';
+import 'package:tads_app/src/core/local_source/storage_keys.dart';
 
 class LocalStorage {
   static LocalStorage? _instance;
