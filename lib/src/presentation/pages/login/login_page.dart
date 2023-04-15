@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tads_app/generated/locale_keys.g.dart';
-import 'package:tads_app/src/blocs/login/login_bloc.dart';
 import 'package:tads_app/src/config/constants/constants.dart';
 import 'package:tads_app/src/config/routes/app_routes.dart';
+import 'package:tads_app/src/presentation/blocs/login/login_bloc.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);

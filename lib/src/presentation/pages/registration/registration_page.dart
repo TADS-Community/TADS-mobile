@@ -4,8 +4,8 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';
 import 'package:tads_app/generated/locale_keys.g.dart';
-import 'package:tads_app/src/blocs/registration/registration_bloc.dart';
 import 'package:tads_app/src/config/constants/constants.dart';
+import 'package:tads_app/src/presentation/blocs/registration/registration_bloc.dart';
 
 class RegistrationPage extends StatefulWidget {
   const RegistrationPage({Key? key}) : super(key: key);

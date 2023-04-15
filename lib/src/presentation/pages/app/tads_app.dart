@@ -4,7 +4,7 @@ import 'package:keyboard_dismisser/keyboard_dismisser.dart';
 import 'package:tads_app/src/config/constants/constants.dart';
 import 'package:tads_app/src/config/routes/app_routes.dart';
 import 'package:tads_app/src/config/theme/app_theme.dart';
-import 'package:tads_app/src/data/local_source/local_storage.dart';
+import 'package:tads_app/src/utils/local_source/local_storage.dart';
 
 class TadsApp extends StatefulWidget {
   const TadsApp({Key? key}) : super(key: key);

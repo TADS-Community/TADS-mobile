@@ -3,7 +3,7 @@ import 'package:dio_retry_plus/dio_retry_plus.dart';
 import 'package:flutter/foundation.dart';
 import 'package:tads_app/src/config/constants/constants.dart';
 import 'package:tads_app/src/data/api_provider/interceptors/token_referesh_interceptor.dart';
-import 'package:tads_app/src/data/local_source/local_storage.dart';
+import 'package:tads_app/src/utils/local_source/local_storage.dart';
 
 class DioSettings {
   BaseOptions _dioBaseOptions = BaseOptions(

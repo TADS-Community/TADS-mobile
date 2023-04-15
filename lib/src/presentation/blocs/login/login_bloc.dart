@@ -2,14 +2,15 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
-import 'package:tads_app/src/data/repos/login_repository.dart';
+import 'package:tads_app/src/data/repos/login_repo_impl.dart';
+import 'package:tads_app/src/domain/repositories/login_repository.dart';
 
 part 'login_event.dart';
 
 part 'login_state.dart';
 
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
-  final repo = LoginRepository();
+  LoginRepository repo = LoginRepoImpl();
 
   LoginBloc() : super(LoginInitial()) {
     on<InitialEvent>(_init);
