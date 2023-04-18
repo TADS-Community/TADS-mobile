@@ -60,7 +60,7 @@ class AppTheme {
       ),
       errorStyle: const TextStyle(color: Colors.red),
     ),
-    textButtonTheme: TextButtonThemeData(
+    elevatedButtonTheme: ElevatedButtonThemeData(
       style: TextButton.styleFrom(
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(kBorderRadius)),
@@ -75,6 +75,15 @@ class AppTheme {
       trackColor: MaterialStateProperty.all(Colors.white),
     ),
     dialogBackgroundColor: Colors.white,
+    textButtonTheme: TextButtonThemeData(
+      style: TextButton.styleFrom(
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(Radius.circular(kBorderRadius)),
+        ),
+        textStyle: GoogleFonts.spaceMonoTextTheme().titleMedium,
+        foregroundColor: Colors.black,
+      ),
+    ),
   );
 
   static final ThemeData dark = ThemeData(
@@ -121,7 +130,7 @@ class AppTheme {
       ),
       errorStyle: const TextStyle(color: Colors.red),
     ),
-    textButtonTheme: TextButtonThemeData(
+    elevatedButtonTheme: ElevatedButtonThemeData(
       style: TextButton.styleFrom(
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(kBorderRadius)),
@@ -139,5 +148,14 @@ class AppTheme {
       trackColor: MaterialStateProperty.all(Colors.greenAccent),
     ),
     dialogBackgroundColor: const Color(0xff1B1B1B),
+    textButtonTheme: TextButtonThemeData(
+      style: TextButton.styleFrom(
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(Radius.circular(kBorderRadius)),
+        ),
+        textStyle: GoogleFonts.spaceMonoTextTheme().titleMedium,
+        foregroundColor: Colors.white,
+      ),
+    ),
   );
 }

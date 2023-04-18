@@ -54,5 +54,5 @@ class DioFailure implements Failure {
 }
 
 class ParsingFailure extends Failure {
-  ParsingFailure() : super('',500);
+  ParsingFailure() : super('Information does not match',500);
 }

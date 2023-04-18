@@ -38,6 +38,10 @@ class LocalStorage {
     await _localStorage?.setString(StorageKeys.themeMode, value);
   }
 
+  static Future<void> setID(int value) async {
+    await _localStorage?.setInt(StorageKeys.id, value);
+  }
+
   static String get getLocale =>
       _localStorage?.getString(StorageKeys.locale) ?? 'uz';
 
@@ -52,6 +56,9 @@ class LocalStorage {
 
   static String get getThemeMode =>
       _localStorage?.getString(StorageKeys.themeMode) ?? 'dark';
+
+  static int get getID =>
+      _localStorage?.getInt(StorageKeys.id) ?? -1;
 
   static Future<void> clearProfile() async {
     await _localStorage?.remove(StorageKeys.accessToken);

@@ -21,6 +21,8 @@ class LoginRepoImpl implements LoginRepository {
       return Left(ParsingFailure());
     } on DioError catch (e) {
       return Left(DioFailure(error: e));
+    } catch (error) {
+      return Left(ParsingFailure());
     }
   }
 
@@ -38,6 +40,8 @@ class LoginRepoImpl implements LoginRepository {
       return Left(ParsingFailure());
     } on DioError catch (e) {
       return Left(DioFailure(error: e));
+    } catch (error) {
+      return Left(ParsingFailure());
     }
   }
 

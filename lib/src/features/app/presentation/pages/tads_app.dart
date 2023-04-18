@@ -24,7 +24,7 @@ class _TadsAppState extends State<TadsApp> {
   void initState() {
     super.initState();
     bloc = AppBloc(LocalStorage.getThemeMode);
-    _authenticated = LocalStorage.getAccessToken.isNotEmpty;
+    _authenticated = LocalStorage.getID != -1;
   }
 
   @override

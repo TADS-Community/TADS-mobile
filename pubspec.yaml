@@ -44,4 +44,5 @@ flutter:
     - assets/
     - assets/icons/
     - assets/icons/png/
+    - assets/icons/svg/
     - assets/translations/

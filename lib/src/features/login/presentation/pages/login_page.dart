@@ -2,10 +2,13 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:formz/formz.dart';
 import 'package:tads_app/generated/locale_keys.g.dart';
 import 'package:tads_app/src/config/constants/constants.dart';
 import 'package:tads_app/src/config/routes/app_routes.dart';
+import 'package:tads_app/src/config/theme/app_icons.dart';
+import 'package:tads_app/src/core/utils/base_functions.dart';
 import 'package:tads_app/src/features/common/presentation/dialogs/settings_dialog.dart';
 import 'package:tads_app/src/features/login/presentation/blocs/login_bloc.dart';
 
@@ -21,6 +24,7 @@ class _LoginPageState extends State<LoginPage> {
   final TextEditingController _controllerID = TextEditingController();
   final TextEditingController _controllerPassword = TextEditingController();
   late LoginBloc bloc;
+  bool _hidden = true;
 
   @override
   void initState() {
@@ -91,17 +95,44 @@ class _LoginPageState extends State<LoginPage> {
                           maxLength: 32,
                           controller: _controllerPassword,
                           validator: ((s) {
-                            if (s!.length < 8) {
-                              return LocaleKeys.length_input.tr(args: ['8']);
+                            if (!BaseFunctions.validPassword(s ?? '')) {
+                              return LocaleKeys.password_requirement.tr();
                             }
                             return null;
                           }),
-                          obscureText: true,
+                          obscureText: _hidden,
                           decoration: InputDecoration(
-                              hintText: LocaleKeys.password.tr()),
+                            suffixIcon: GestureDetector(
+                              behavior: HitTestBehavior.opaque,
+                              onTap: () {
+                                setState(() {
+                                  _hidden = !_hidden;
+                                });
+                              },
+                              child: AnimatedSwitcher(
+                                duration: const Duration(microseconds: 1000),
+                                switchInCurve: Curves.easeIn,
+                                switchOutCurve: Curves.easeOut,
+                                child: !_hidden
+                                    ? const Icon(Icons.remove_red_eye_outlined)
+                                    : SvgPicture.asset(AppIcons.eye,
+                                        width: 18,
+                                        height: 18,
+                                        colorFilter: ColorFilter.mode(
+                                            Theme.of(context)
+                                                    .appBarTheme
+                                                    .titleTextStyle
+                                                    ?.color ??
+                                                Colors.white,
+                                            BlendMode.srcIn)),
+                              ),
+                            ),
+                            hintText: LocaleKeys.password.tr(),
+                            counterText: '',
+                          ),
                         ),
                         kHeight24,
-                        TextButton(
+                        ElevatedButton(
                           onPressed: () {
                             if (_formKey.currentState?.validate() ?? false) {
                               bloc.add(PostLoginEvent(
@@ -122,9 +153,8 @@ class _LoginPageState extends State<LoginPage> {
                               : Text(LocaleKeys.login.tr()),
                         ),
                         kHeight16,
-                        GestureDetector(
-                          behavior: HitTestBehavior.opaque,
-                          onTap: () {},
+                        TextButton(
+                          onPressed: () {},
                           child: Padding(
                             padding: const EdgeInsets.symmetric(
                               vertical: 4,
@@ -136,7 +166,7 @@ class _LoginPageState extends State<LoginPage> {
                       ],
                     ),
                     const Spacer(),
-                    TextButton(
+                    ElevatedButton(
                       onPressed: () {
                         if (!state.statusLogin.isInProgress) {
                           Navigator.of(context).pushNamed(AppRoutes.register);

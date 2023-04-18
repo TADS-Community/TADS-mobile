@@ -4,7 +4,7 @@ part 'register_response_model.g.dart';
 
 @JsonSerializable(fieldRename: FieldRename.snake)
 class RegisterResponseModel {
-  final String uid;
+  final int uid;
 
   RegisterResponseModel({
     required this.uid,

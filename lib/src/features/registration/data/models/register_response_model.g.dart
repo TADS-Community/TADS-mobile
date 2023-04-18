@@ -9,7 +9,7 @@ part of 'register_response_model.dart';
 RegisterResponseModel _$RegisterResponseModelFromJson(
         Map<String, dynamic> json) =>
     RegisterResponseModel(
-      uid: json['uid'] as String,
+      uid: json['uid'] as int,
     );
 
 Map<String, dynamic> _$RegisterResponseModelToJson(

@@ -3,6 +3,7 @@
   "registration": "Registration",
   "length_input": "Length must be larger than {}",
   "password": "Password",
+  "password_requirement": "Minimum length 8, at least\nnone upper case letter one digit.",
   "enter": "Enter",
   "generated_id": "Your generated ID",
   "error_generating": "Error occurred while generating\nHit the refresh button",
