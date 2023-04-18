@@ -8,6 +8,7 @@ import 'package:tads_app/generated/locale_keys.g.dart';
 import 'package:tads_app/src/config/constants/constants.dart';
 import 'package:tads_app/src/config/routes/app_routes.dart';
 import 'package:tads_app/src/config/theme/app_icons.dart';
+import 'package:tads_app/src/core/local_source/local_storage.dart';
 import 'package:tads_app/src/core/utils/base_functions.dart';
 import 'package:tads_app/src/features/common/presentation/dialogs/settings_dialog.dart';
 import 'package:tads_app/src/features/login/presentation/blocs/login_bloc.dart';
@@ -39,6 +40,7 @@ class _LoginPageState extends State<LoginPage> {
       child: BlocConsumer<LoginBloc, LoginState>(
         listener: (context, state) {
           if (state.statusLogin.isSuccess) {
+            LocalStorage.setID(int.parse(_controllerID.text));
             Navigator.of(context)
                 .pushNamedAndRemoveUntil(AppRoutes.home, (route) => false);
           }

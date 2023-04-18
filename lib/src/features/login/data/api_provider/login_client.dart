@@ -4,7 +4,7 @@ import 'package:tads_app/src/config/constants/constants.dart';
 import 'package:tads_app/src/core/api_provider/base/dio_settings.dart';
 import 'package:tads_app/src/core/get_it/service_locator.dart';
 import 'package:tads_app/src/features/common/data/models/auth_post_model.dart';
-import 'package:tads_app/src/features/login/data/models/campaign_model.dart';
+import 'package:tads_app/src/features/login/data/models/login_response_model.dart';
 
 part 'login_client.g.dart';
 
@@ -32,13 +32,8 @@ abstract class LoginClient {
   }
 
   @POST("auth/login/")
-  Future<AuthPostModel> login(
+  Future<LoginResponseModel> login(
     @Body() AuthPostModel model,
   );
 
-  @GET("auth/login")
-  Future<List<CampaignModel>> getCampaignList(
-    @Query('limit') int? limit,
-    @Query('page') int? page,
-  );
 }

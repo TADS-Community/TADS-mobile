@@ -21,14 +21,14 @@ class _LoginClient implements LoginClient {
   String? baseUrl;
 
   @override
-  Future<AuthPostModel> login(model) async {
+  Future<LoginResponseModel> login(model) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(model.toJson());
     final _result = await _dio
-        .fetch<Map<String, dynamic>>(_setStreamType<AuthPostModel>(Options(
+        .fetch<Map<String, dynamic>>(_setStreamType<LoginResponseModel>(Options(
       method: 'POST',
       headers: _headers,
       extra: _extra,
@@ -40,39 +40,7 @@ class _LoginClient implements LoginClient {
               data: _data,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value = AuthPostModel.fromJson(_result.data!);
-    return value;
-  }
-
-  @override
-  Future<List<CampaignModel>> getCampaignList(
-    limit,
-    page,
-  ) async {
-    const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{
-      r'limit': limit,
-      r'page': page,
-    };
-    queryParameters.removeWhere((k, v) => v == null);
-    final _headers = <String, dynamic>{};
-    final Map<String, dynamic>? _data = null;
-    final _result = await _dio
-        .fetch<List<dynamic>>(_setStreamType<List<CampaignModel>>(Options(
-      method: 'GET',
-      headers: _headers,
-      extra: _extra,
-    )
-            .compose(
-              _dio.options,
-              'auth/login',
-              queryParameters: queryParameters,
-              data: _data,
-            )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    var value = _result.data!
-        .map((dynamic i) => CampaignModel.fromJson(i as Map<String, dynamic>))
-        .toList();
+    final value = LoginResponseModel.fromJson(_result.data!);
     return value;
   }
 

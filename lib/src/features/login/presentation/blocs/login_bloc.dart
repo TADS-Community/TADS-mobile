@@ -4,6 +4,7 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:formz/formz.dart';
 import 'package:meta/meta.dart';
+import 'package:tads_app/src/core/local_source/local_storage.dart';
 import 'package:tads_app/src/features/common/data/models/auth_post_model.dart';
 import 'package:tads_app/src/features/login/data/repos/login_repo_impl.dart';
 import 'package:tads_app/src/features/login/domain/repositories/login_repository.dart';
@@ -37,6 +38,8 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       phone: event.phone,
     ));
     if (res.isRight) {
+      LocalStorage.setAccessToken(res.right.access);
+      LocalStorage.setRefreshToken(res.right.refresh);
       emit(state.copWith(statusLogin: FormzSubmissionStatus.success));
     } else {
       emit(state.copWith(
