@@ -16,16 +16,16 @@ class RegistrationBloc extends Bloc<RegistrationEvent, RegistrationState> {
 
   Future _onChangeStatus(
       ChangeStatusEvent event, Emitter<RegistrationState> emit) async {
-    emit(state.copWith(statusID: event.status));
+    emit(state.copWith(statusReg: event.status));
   }
 
   _generateID(GenerateID event, Emitter<RegistrationState> emit) async {
     add(const ChangeStatusEvent(FormzSubmissionStatus.inProgress));
     final result = await Future.delayed(const Duration(seconds: 2));
     if (false) {
-      emit(state.copWith(statusID: FormzSubmissionStatus.success));
+      emit(state.copWith(statusReg: FormzSubmissionStatus.success));
     } else {
-      emit(state.copWith(statusID: FormzSubmissionStatus.failure));
+      emit(state.copWith(statusReg: FormzSubmissionStatus.failure));
     }
   }
 }

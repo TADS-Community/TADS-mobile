@@ -16,6 +16,8 @@ class AppConsts {
 const appName = 'TADS';
 const uz = 'uz';
 const en = 'en';
+const dark = 'dark';
+const light = 'light';
 
 const kBorderRadius = 4.0;
 

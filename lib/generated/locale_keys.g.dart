@@ -11,5 +11,10 @@ abstract class  LocaleKeys {
   static const error_unknown = 'error_unknown';
   static const error_server = 'error_server';
   static const error_internet = 'error_internet';
+  static const email = 'email';
+  static const phone_number = 'phone_number';
+  static const or = 'or';
+  static const forgot_password = 'forgot_password';
+  static const dark = 'dark';
 
 }

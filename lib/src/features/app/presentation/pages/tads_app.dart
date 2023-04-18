@@ -1,6 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:keyboard_dismisser/keyboard_dismisser.dart';
 import 'package:tads_app/src/config/constants/constants.dart';
@@ -23,9 +23,7 @@ class _TadsAppState extends State<TadsApp> {
   @override
   void initState() {
     super.initState();
-    var brightness = SchedulerBinding.instance.window.platformBrightness;
-    bool isDarkMode = brightness == Brightness.dark;
-    bloc = AppBloc(isDarkMode ? ThemeMode.dark : ThemeMode.light);
+    bloc = AppBloc(LocalStorage.getThemeMode);
     _authenticated = LocalStorage.getAccessToken.isNotEmpty;
   }
 
@@ -37,17 +35,29 @@ class _TadsAppState extends State<TadsApp> {
         builder: (context, state) {
           return KeyboardDismisser(
             gestures: const [GestureType.onTap],
-            child: MaterialApp(
-              theme: AppTheme.light,
-              darkTheme: AppTheme.dark,
-              themeMode: state.themeMode,
-              debugShowCheckedModeBanner: false,
-              title: appName,
-              supportedLocales: context.supportedLocales,
-              localizationsDelegates: context.localizationDelegates,
-              locale: context.locale,
-              initialRoute: _authenticated ? AppRoutes.home : AppRoutes.login,
-              routes: AppRoutes.routes,
+            child: AnnotatedRegion(
+              value: SystemUiOverlayStyle(
+                systemNavigationBarColor: LocalStorage.getThemeMode == dark
+                    ? Colors.black
+                    : Colors.white,
+                systemNavigationBarIconBrightness:
+                    LocalStorage.getThemeMode == dark
+                        ? Brightness.light
+                        : Brightness.dark,
+              ),
+              child: MaterialApp(
+                theme: AppTheme.light,
+                darkTheme: AppTheme.dark,
+                themeMode:
+                    state.themeMode == dark ? ThemeMode.dark : ThemeMode.light,
+                debugShowCheckedModeBanner: false,
+                title: appName,
+                supportedLocales: context.supportedLocales,
+                localizationsDelegates: context.localizationDelegates,
+                locale: context.locale,
+                initialRoute: _authenticated ? AppRoutes.home : AppRoutes.login,
+                routes: AppRoutes.routes,
+              ),
             ),
           );
         },

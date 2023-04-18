@@ -1,7 +1,9 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:tads_app/generated/locale_keys.g.dart';
 import 'package:tads_app/src/config/constants/constants.dart';
+import 'package:tads_app/src/core/local_source/local_storage.dart';
 import 'package:tads_app/src/features/app/presentation/blocs/app_bloc.dart';
 
 class SettingsDialog extends StatefulWidget {
@@ -15,15 +17,15 @@ class SettingsDialog extends StatefulWidget {
 
 class _SettingsDialogState extends State<SettingsDialog> {
   bool _switch = true;
-  String _languageCode = 'uz';
+  String _languageCode = uz;
 
   List<DropdownMenuItem<String>> items = [
     const DropdownMenuItem(
-      value: 'uz',
+      value: uz,
       child: Text('Uzbek (UZ)'),
     ),
     const DropdownMenuItem(
-      value: 'en',
+      value: en,
       child: Text('English (US)'),
     ),
   ];
@@ -32,6 +34,7 @@ class _SettingsDialogState extends State<SettingsDialog> {
   void initState() {
     super.initState();
     _languageCode = widget.language;
+    _switch = LocalStorage.getThemeMode == dark;
   }
 
   @override
@@ -44,18 +47,20 @@ class _SettingsDialogState extends State<SettingsDialog> {
           DropdownButton(
               value: _languageCode,
               items: items,
+              icon: const Icon(Icons.language),
               onChanged: (value) {
                 if (value != _languageCode) {
                   context.setLocale(Locale(value ?? _languageCode));
                   setState(() {
                     _languageCode = value ?? 'uz';
                   });
+                  LocalStorage.setLocale(_languageCode);
                 }
               }),
           kHeight4,
           Row(
             children: [
-              const Text('Dark'),
+              Text(LocaleKeys.dark.tr()),
               kWidth4,
               Transform.scale(
                 scale: 0.8,
@@ -63,8 +68,10 @@ class _SettingsDialogState extends State<SettingsDialog> {
                   inactiveTrackColor: Theme.of(context).scaffoldBackgroundColor,
                   value: _switch,
                   onChanged: (value) {
-                    context.read<AppBloc>().add(ChangeThemeModeEvent(
-                        value ? ThemeMode.dark : ThemeMode.light));
+                    context
+                        .read<AppBloc>()
+                        .add(ChangeThemeModeEvent(value ? dark : light));
+                    LocalStorage.setThemeMode(value ? dark : light);
                     setState(() {
                       _switch = value;
                     });

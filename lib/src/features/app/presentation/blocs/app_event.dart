@@ -5,7 +5,7 @@ abstract class AppEvent {
 }
 
 class ChangeThemeModeEvent extends AppEvent {
-  final ThemeMode mode;
+  final String mode;
 
   const ChangeThemeModeEvent(this.mode);
 }

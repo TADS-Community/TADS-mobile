@@ -34,6 +34,10 @@ class LocalStorage {
     await _localStorage?.setString(StorageKeys.refreshToken, value);
   }
 
+  static Future<void> setThemeMode(String value) async {
+    await _localStorage?.setString(StorageKeys.themeMode, value);
+  }
+
   static String get getLocale =>
       _localStorage?.getString(StorageKeys.locale) ?? 'uz';
 
@@ -45,6 +49,9 @@ class LocalStorage {
 
   static String get getRefreshToken =>
       _localStorage?.getString(StorageKeys.refreshToken) ?? '';
+
+  static String get getThemeMode =>
+      _localStorage?.getString(StorageKeys.themeMode) ?? 'dark';
 
   static Future<void> clearProfile() async {
     await _localStorage?.remove(StorageKeys.accessToken);

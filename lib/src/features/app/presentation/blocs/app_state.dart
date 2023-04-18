@@ -1,12 +1,12 @@
 part of 'app_bloc.dart';
 
 class AppState extends Equatable {
-  final ThemeMode themeMode;
+  final String themeMode;
 
   const AppState({required this.themeMode});
 
   AppState copWith({
-    ThemeMode? themeMode,
+    String? themeMode,
   }) =>
       AppState(
         themeMode: themeMode ?? this.themeMode,

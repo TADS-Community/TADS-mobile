@@ -8,5 +8,10 @@
   "error_generating": "Yaratish vaqtida xatolik yuz berdi\nYangilash tugmasini bosing",
   "error_unknown": "Noma'lum xatolik",
   "error_server": "Server xatoligi",
-  "error_internet": "Internet bilan xatolik"
+  "error_internet": "Internet bilan xatolik",
+  "email": "email",
+  "phone_number": "telefon raqam",
+  "or": "yoki",
+  "forgot_password" : "Parolni unutdingizmi?",
+  "dark": "Tungi"
 }

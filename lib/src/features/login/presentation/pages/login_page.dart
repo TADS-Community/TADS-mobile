@@ -80,13 +80,15 @@ class _LoginPageState extends State<LoginPage> {
                           ],
                           keyboardType: TextInputType.number,
                           maxLength: 20,
-                          decoration: const InputDecoration(
-                            hintText: 'ID',
+                          decoration: InputDecoration(
+                            hintText:
+                                'ID, ${LocaleKeys.email.tr()} ${LocaleKeys.or.tr()} ${LocaleKeys.phone_number.tr()}',
                             counterText: '',
                           ),
                         ),
                         kHeight16,
                         TextFormField(
+                          maxLength: 32,
                           controller: _controllerPassword,
                           validator: ((s) {
                             if (s!.length < 8) {
@@ -108,16 +110,27 @@ class _LoginPageState extends State<LoginPage> {
                               ));
                             }
                           },
-                          child: Text(LocaleKeys.login.tr()),
+                          child: state.statusLogin.isInProgress
+                              ? const SizedBox(
+                                  width: 20,
+                                  height: 20,
+                                  child: CircularProgressIndicator.adaptive(
+                                    backgroundColor: Colors.white,
+                                    strokeWidth: 3,
+                                  ),
+                                )
+                              : Text(LocaleKeys.login.tr()),
                         ),
                         kHeight16,
                         GestureDetector(
                           behavior: HitTestBehavior.opaque,
                           onTap: () {},
-                          child: const Padding(
-                            padding: EdgeInsets.symmetric(
-                                vertical: 4, horizontal: 16),
-                            child: Text('Forgot password?'),
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                              vertical: 4,
+                              horizontal: 16,
+                            ),
+                            child: Text(LocaleKeys.forgot_password.tr()),
                           ),
                         ),
                       ],
@@ -129,7 +142,16 @@ class _LoginPageState extends State<LoginPage> {
                           Navigator.of(context).pushNamed(AppRoutes.register);
                         }
                       },
-                      child: Text(LocaleKeys.registration.tr()),
+                      child: state.statusLogin.isInProgress
+                          ? const SizedBox(
+                              width: 20,
+                              height: 20,
+                              child: CircularProgressIndicator.adaptive(
+                                backgroundColor: Colors.white,
+                                strokeWidth: 3,
+                              ),
+                            )
+                          : Text(LocaleKeys.registration.tr()),
                     ),
                     kHeight24,
                   ],

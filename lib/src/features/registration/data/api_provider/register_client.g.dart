@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'login_client.dart';
+part of 'register_client.dart';
 
 // **************************************************************************
 // RetrofitGenerator
@@ -8,8 +8,8 @@ part of 'login_client.dart';
 
 // ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers
 
-class _LoginClient implements LoginClient {
-  _LoginClient(
+class _RegisterClient implements RegisterClient {
+  _RegisterClient(
     this._dio, {
     this.baseUrl,
   }) {
@@ -21,58 +21,26 @@ class _LoginClient implements LoginClient {
   String? baseUrl;
 
   @override
-  Future<AuthPostModel> login(model) async {
+  Future<RegisterResponseModel> login(model) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
     _data.addAll(model.toJson());
-    final _result = await _dio
-        .fetch<Map<String, dynamic>>(_setStreamType<AuthPostModel>(Options(
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<RegisterResponseModel>(Options(
       method: 'POST',
       headers: _headers,
       extra: _extra,
     )
             .compose(
               _dio.options,
-              'auth/login/',
+              'auth/register/',
               queryParameters: queryParameters,
               data: _data,
             )
             .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    final value = AuthPostModel.fromJson(_result.data!);
-    return value;
-  }
-
-  @override
-  Future<List<CampaignModel>> getCampaignList(
-    limit,
-    page,
-  ) async {
-    const _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{
-      r'limit': limit,
-      r'page': page,
-    };
-    queryParameters.removeWhere((k, v) => v == null);
-    final _headers = <String, dynamic>{};
-    final Map<String, dynamic>? _data = null;
-    final _result = await _dio
-        .fetch<List<dynamic>>(_setStreamType<List<CampaignModel>>(Options(
-      method: 'GET',
-      headers: _headers,
-      extra: _extra,
-    )
-            .compose(
-              _dio.options,
-              'auth/login',
-              queryParameters: queryParameters,
-              data: _data,
-            )
-            .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
-    var value = _result.data!
-        .map((dynamic i) => CampaignModel.fromJson(i as Map<String, dynamic>))
-        .toList();
+    final value = RegisterResponseModel.fromJson(_result.data!);
     return value;
   }
 

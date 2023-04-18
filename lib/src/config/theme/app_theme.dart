@@ -71,6 +71,10 @@ class AppTheme {
         foregroundColor: Colors.white,
       ),
     ),
+    switchTheme: SwitchThemeData(
+      trackColor: MaterialStateProperty.all(Colors.white),
+    ),
+    dialogBackgroundColor: Colors.white,
   );
 
   static final ThemeData dark = ThemeData(
@@ -128,10 +132,12 @@ class AppTheme {
         foregroundColor: Colors.black,
       ),
     ),
-    progressIndicatorTheme: const ProgressIndicatorThemeData(color: Colors.greenAccent),
+    progressIndicatorTheme:
+        const ProgressIndicatorThemeData(color: Colors.greenAccent),
     switchTheme: SwitchThemeData(
       thumbColor: MaterialStateProperty.all(AppColors.white),
       trackColor: MaterialStateProperty.all(Colors.greenAccent),
-    )
+    ),
+    dialogBackgroundColor: const Color(0xff1B1B1B),
   );
 }
