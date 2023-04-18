@@ -42,6 +42,10 @@ class LocalStorage {
     await _localStorage?.setInt(StorageKeys.id, value);
   }
 
+  static Future<void> setPinCode(String value) async {
+    await _localStorage?.setString(StorageKeys.pinCode, value);
+  }
+
   static String get getLocale =>
       _localStorage?.getString(StorageKeys.locale) ?? 'uz';
 
@@ -59,6 +63,9 @@ class LocalStorage {
 
   static int get getID =>
       _localStorage?.getInt(StorageKeys.id) ?? -1;
+
+  static String get getPinCode =>
+      _localStorage?.getString(StorageKeys.pinCode) ?? '';
 
   static Future<void> clearProfile() async {
     await _localStorage?.remove(StorageKeys.accessToken);

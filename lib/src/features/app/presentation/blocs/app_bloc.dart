@@ -10,5 +10,8 @@ class AppBloc extends Bloc<AppEvent, AppState> {
     on<ChangeThemeModeEvent>((event, emit) {
       emit(state.copWith(themeMode: event.mode));
     });
+    on<ChangeLockEvent>((event, emit) {
+      emit(state.copWith(unlocked: !state.unlocked));
+    });
   }
 }

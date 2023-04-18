@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:tads_app/src/config/routes/app_routes.dart';
-import 'package:tads_app/src/features/home/presentation/widgets/donation_item.dart';
+import 'package:tads_app/src/features/main/presentation/widgets/donation_item.dart';
 
-class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
+class MainPage extends StatelessWidget {
+  const MainPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

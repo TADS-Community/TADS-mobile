@@ -6,5 +6,5 @@ class StorageKeys {
   static const refreshToken = "refreshToken";
   static const themeMode = "themeMode";
   static const id = "id";
-
+  static const pinCode = "pinCode";
 }
