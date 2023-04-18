@@ -8,5 +8,8 @@ abstract class  LocaleKeys {
   static const enter = 'enter';
   static const generated_id = 'generated_id';
   static const error_generating = 'error_generating';
+  static const error_unknown = 'error_unknown';
+  static const error_server = 'error_server';
+  static const error_internet = 'error_internet';
 
 }

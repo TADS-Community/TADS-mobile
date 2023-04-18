@@ -21,7 +21,10 @@ class CodegenLoader extends AssetLoader{
   "password": "Password",
   "enter": "Enter",
   "generated_id": "Your generated ID",
-  "error_generating": "Error occurred while generating\nHit the refresh button"
+  "error_generating": "Error occurred while generating\nHit the refresh button",
+  "error_unknown": "Unknown error",
+  "error_server": "Server error",
+  "error_internet": "Internet connection error"
 };
 static const Map<String,dynamic> uz = {
   "login": "Kirish",
@@ -30,7 +33,10 @@ static const Map<String,dynamic> uz = {
   "password": "Parol",
   "enter": "Kirish",
   "generated_id": "Siz uchun ID",
-  "error_generating": "Yaratish vaqtida xatolik yuz berdi\nYangilash tugmasini bosing"
+  "error_generating": "Yaratish vaqtida xatolik yuz berdi\nYangilash tugmasini bosing",
+  "error_unknown": "Noma'lum xatolik",
+  "error_server": "Server xatoligi",
+  "error_internet": "Internet bilan xatolik"
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"en": en, "uz": uz};
 }

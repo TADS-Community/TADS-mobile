@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tads_app/src/presentation/pages/home/home_page.dart';
+import 'package:tads_app/src/features/home/presentation/pages/home_page.dart';
 import 'package:tads_app/src/features/login/presentation/pages/login_page.dart';
 import 'package:tads_app/src/features/registration/presentation/pages/registration_page.dart';
 

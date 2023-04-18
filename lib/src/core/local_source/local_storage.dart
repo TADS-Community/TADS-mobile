@@ -35,7 +35,7 @@ class LocalStorage {
   }
 
   static String get getLocale =>
-      _localStorage?.getString(StorageKeys.locale) ?? 'ru';
+      _localStorage?.getString(StorageKeys.locale) ?? 'uz';
 
   static bool get getChuck =>
       _localStorage?.getBool(StorageKeys.chuck) ?? false;

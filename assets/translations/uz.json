@@ -5,5 +5,8 @@
   "password": "Parol",
   "enter": "Kirish",
   "generated_id": "Siz uchun ID",
-  "error_generating": "Yaratish vaqtida xatolik yuz berdi\nYangilash tugmasini bosing"
+  "error_generating": "Yaratish vaqtida xatolik yuz berdi\nYangilash tugmasini bosing",
+  "error_unknown": "Noma'lum xatolik",
+  "error_server": "Server xatoligi",
+  "error_internet": "Internet bilan xatolik"
 }

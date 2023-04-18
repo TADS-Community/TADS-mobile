@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:formz/formz.dart';
 import 'package:tads_app/generated/locale_keys.g.dart';
 import 'package:tads_app/src/config/constants/constants.dart';
 import 'package:tads_app/src/config/routes/app_routes.dart';
@@ -23,14 +24,24 @@ class _LoginPageState extends State<LoginPage> {
   @override
   void initState() {
     super.initState();
-    bloc = LoginBloc()..add(InitialEvent());
+    bloc = LoginBloc();
   }
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => bloc,
-      child: BlocBuilder<LoginBloc, LoginState>(
+      child: BlocConsumer<LoginBloc, LoginState>(
+        listener: (context, state) {
+          if (state.statusLogin.isSuccess) {
+            Navigator.of(context)
+                .pushNamedAndRemoveUntil(AppRoutes.home, (route) => false);
+          }
+          if (state.statusLogin.isFailure) {
+            ScaffoldMessenger.of(context)
+                .showSnackBar(SnackBar(content: Text(state.errorMessage)));
+          }
+        },
         builder: (context, state) {
           return Scaffold(
             body: Padding(
@@ -75,14 +86,21 @@ class _LoginPageState extends State<LoginPage> {
                     kHeight24,
                     TextButton(
                       onPressed: () {
-                        if (_formKey.currentState?.validate() ?? false) {}
+                        if (_formKey.currentState?.validate() ?? false) {
+                          bloc.add(PostLoginEvent(
+                            uid: _controllerID.text,
+                            password: _controllerPassword.text,
+                          ));
+                        }
                       },
                       child: Text(LocaleKeys.login.tr()),
                     ),
                     kHeight16,
                     TextButton(
                       onPressed: () {
-                        Navigator.of(context).pushNamed(AppRoutes.register);
+                        if (!state.statusLogin.isInProgress) {
+                          Navigator.of(context).pushNamed(AppRoutes.register);
+                        }
                       },
                       child: Text(LocaleKeys.registration.tr()),
                     ),

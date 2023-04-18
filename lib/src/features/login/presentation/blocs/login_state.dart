@@ -1,6 +1,26 @@
 part of 'login_bloc.dart';
 
-@immutable
-abstract class LoginState {}
+class LoginState extends Equatable {
+  final FormzSubmissionStatus statusLogin;
+  final String errorMessage;
 
-class LoginInitial extends LoginState {}
+  const LoginState({
+    this.statusLogin = FormzSubmissionStatus.initial,
+    this.errorMessage = '',
+  });
+
+  LoginState copWith({
+    FormzSubmissionStatus? statusLogin,
+    String? errorMessage,
+  }) =>
+      LoginState(
+        statusLogin: statusLogin ?? this.statusLogin,
+        errorMessage: errorMessage ?? this.errorMessage,
+      );
+
+  @override
+  List<Object?> get props => [
+        statusLogin,
+        errorMessage,
+      ];
+}
