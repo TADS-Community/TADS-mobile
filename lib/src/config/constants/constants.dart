@@ -24,6 +24,10 @@ const kHeight4 = SizedBox(height: 4);
 const kHeight8 = SizedBox(height: 8);
 const kHeight16 = SizedBox(height: 16);
 const kHeight24 = SizedBox(height: 24);
+const kHeight32 = SizedBox(height: 32);
+const kHeight36 = SizedBox(height: 36);
+const kHeight40 = SizedBox(height: 40);
+const kHeight48 = SizedBox(height: 48);
 
 const kWidth2 = SizedBox(width: 2);
 const kWidth4 = SizedBox(width: 4);

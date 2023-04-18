@@ -6,6 +6,7 @@ import 'package:formz/formz.dart';
 import 'package:tads_app/generated/locale_keys.g.dart';
 import 'package:tads_app/src/config/constants/constants.dart';
 import 'package:tads_app/src/config/routes/app_routes.dart';
+import 'package:tads_app/src/features/common/presentation/dialogs/settings_dialog.dart';
 import 'package:tads_app/src/features/login/presentation/blocs/login_bloc.dart';
 
 class LoginPage extends StatefulWidget {
@@ -50,52 +51,78 @@ class _LoginPageState extends State<LoginPage> {
                 key: _formKey,
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    TextFormField(
-                      controller: _controllerID,
-                      validator: ((s) {
-                        if (s!.length < 6) {
-                          return LocaleKeys.length_input.tr(args: ['6']);
-                        }
-                        return null;
-                      }),
-                      inputFormatters: [
-                        FilteringTextInputFormatter.allow(RegExp(r'[0-9]'))
+                    kHeight48,
+                    IconButton(
+                        onPressed: () {
+                          showDialog(
+                              context: context,
+                              builder: (context) => SettingsDialog(
+                                    language: context.locale.languageCode,
+                                  ));
+                        },
+                        icon: const Icon(Icons.settings)),
+                    const Spacer(),
+                    Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        TextFormField(
+                          controller: _controllerID,
+                          validator: ((s) {
+                            if (s!.length < 6) {
+                              return LocaleKeys.length_input.tr(args: ['6']);
+                            }
+                            return null;
+                          }),
+                          inputFormatters: [
+                            FilteringTextInputFormatter.allow(RegExp(r'[0-9]'))
+                          ],
+                          keyboardType: TextInputType.number,
+                          maxLength: 20,
+                          decoration: const InputDecoration(
+                            hintText: 'ID',
+                            counterText: '',
+                          ),
+                        ),
+                        kHeight16,
+                        TextFormField(
+                          controller: _controllerPassword,
+                          validator: ((s) {
+                            if (s!.length < 8) {
+                              return LocaleKeys.length_input.tr(args: ['8']);
+                            }
+                            return null;
+                          }),
+                          obscureText: true,
+                          decoration: InputDecoration(
+                              hintText: LocaleKeys.password.tr()),
+                        ),
+                        kHeight24,
+                        TextButton(
+                          onPressed: () {
+                            if (_formKey.currentState?.validate() ?? false) {
+                              bloc.add(PostLoginEvent(
+                                uid: _controllerID.text,
+                                password: _controllerPassword.text,
+                              ));
+                            }
+                          },
+                          child: Text(LocaleKeys.login.tr()),
+                        ),
+                        kHeight16,
+                        GestureDetector(
+                          behavior: HitTestBehavior.opaque,
+                          onTap: () {},
+                          child: const Padding(
+                            padding: EdgeInsets.symmetric(
+                                vertical: 4, horizontal: 16),
+                            child: Text('Forgot password?'),
+                          ),
+                        ),
                       ],
-                      keyboardType: TextInputType.number,
-                      maxLength: 20,
-                      decoration: const InputDecoration(
-                        hintText: 'ID',
-                        counterText: '',
-                      ),
                     ),
-                    kHeight16,
-                    TextFormField(
-                      controller: _controllerPassword,
-                      validator: ((s) {
-                        if (s!.length < 8) {
-                          return LocaleKeys.length_input.tr(args: ['8']);
-                        }
-                        return null;
-                      }),
-                      obscureText: true,
-                      decoration:
-                          InputDecoration(hintText: LocaleKeys.password.tr()),
-                    ),
-                    kHeight24,
-                    TextButton(
-                      onPressed: () {
-                        if (_formKey.currentState?.validate() ?? false) {
-                          bloc.add(PostLoginEvent(
-                            uid: _controllerID.text,
-                            password: _controllerPassword.text,
-                          ));
-                        }
-                      },
-                      child: Text(LocaleKeys.login.tr()),
-                    ),
-                    kHeight16,
+                    const Spacer(),
                     TextButton(
                       onPressed: () {
                         if (!state.statusLogin.isInProgress) {
@@ -104,6 +131,7 @@ class _LoginPageState extends State<LoginPage> {
                       },
                       child: Text(LocaleKeys.registration.tr()),
                     ),
+                    kHeight24,
                   ],
                 ),
               ),

@@ -128,6 +128,10 @@ class AppTheme {
         foregroundColor: Colors.black,
       ),
     ),
-    progressIndicatorTheme: const ProgressIndicatorThemeData(color: Colors.greenAccent)
+    progressIndicatorTheme: const ProgressIndicatorThemeData(color: Colors.greenAccent),
+    switchTheme: SwitchThemeData(
+      thumbColor: MaterialStateProperty.all(AppColors.white),
+      trackColor: MaterialStateProperty.all(Colors.greenAccent),
+    )
   );
 }
