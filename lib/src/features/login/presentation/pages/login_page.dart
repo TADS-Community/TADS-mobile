@@ -41,8 +41,10 @@ class _LoginPageState extends State<LoginPage> {
         listener: (context, state) {
           if (state.statusLogin.isSuccess) {
             LocalStorage.setID(int.parse(_controllerID.text));
-            Navigator.of(context)
-                .pushNamedAndRemoveUntil(AppRoutes.home, (route) => false);
+            Navigator.of(context).pushNamedAndRemoveUntil(
+              AppRoutes.setPinCode,
+              (route) => false,
+            );
           }
           if (state.statusLogin.isFailure) {
             ScaffoldMessenger.of(context)
@@ -168,7 +170,7 @@ class _LoginPageState extends State<LoginPage> {
                       ],
                     ),
                     const Spacer(),
-                    ElevatedButton(
+                    OutlinedButton(
                       onPressed: () {
                         if (!state.statusLogin.isInProgress) {
                           Navigator.of(context).pushNamed(AppRoutes.register);

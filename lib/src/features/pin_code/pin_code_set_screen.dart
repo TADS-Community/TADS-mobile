@@ -1,5 +1,11 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_pin_code_widget/flutter_pin_code_widget.dart';
+import 'package:tads_app/src/config/routes/app_routes.dart';
+import 'package:tads_app/src/core/local_source/local_storage.dart';
+import 'package:tads_app/src/features/app/presentation/blocs/app_bloc.dart';
 
 class PinCodeSetPage extends StatefulWidget {
   const PinCodeSetPage({Key? key}) : super(key: key);
@@ -9,6 +15,10 @@ class PinCodeSetPage extends StatefulWidget {
 }
 
 class _PinCodeSetPageState extends State<PinCodeSetPage> {
+  String temp = '';
+  StreamController<bool> streamController = StreamController();
+  String commandText = 'Create PIN';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -22,26 +32,40 @@ class _PinCodeSetPageState extends State<PinCodeSetPage> {
               style: Theme.of(context).textTheme.headlineMedium,
             ),
             const SizedBox(height: 20),
-            const Text('You can use this PIN to unlock the app..'),
-            const Text('Pin length is 4-25 digits'),
+            Text(commandText),
             const SizedBox(height: 60),
-            Expanded(
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.7,
               child: PinCodeWidget(
+                filledIndicatorColor: Colors.greenAccent,
+                clearStream: streamController.stream,
                 minPinLength: 4,
-                maxPinLength: 25,
+                maxPinLength: 4,
                 onChangedPin: (pin) {
                   // check the PIN length and check different PINs with 4,5.. length.
+                  if (pin.length == 4) {
+                    if (temp.isEmpty) {
+                      temp = pin;
+                      streamController.add(true);
+                      setState(() {
+                        commandText = 'Confirm PIN';
+                      });
+                    } else if (temp == pin) {
+                      LocalStorage.setPinCode(pin);
+                      context.read<AppBloc>().add(ChangeLockEvent());
+                      Navigator.of(context).pushNamedAndRemoveUntil(
+                          AppRoutes.home, (route) => false);
+                    } else {
+                      setState(() {
+                        temp = '';
+                        commandText = 'Create PIN';
+                      });
+                    }
+                  }
                 },
                 onEnter: (pin, _) {
                   // callback user pressed enter
                 },
-                centerBottomWidget: IconButton(
-                  icon: const Icon(
-                    Icons.fingerprint,
-                    size: 40,
-                  ),
-                  onPressed: () {},
-                ),
               ),
             ),
           ],

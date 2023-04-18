@@ -44,8 +44,10 @@ class _RegistrationPageState extends State<RegistrationPage> {
               builder: (context) => SuccessDialog(
                 id: state.id,
               ),
-            ).then((value) => Navigator.of(context)
-                .pushNamedAndRemoveUntil(AppRoutes.home, (route) => false));
+            ).then((value) => Navigator.of(context).pushNamedAndRemoveUntil(
+                  AppRoutes.setPinCode,
+                  (route) => false,
+                ));
           }
           if (state.statusReg.isFailure) {
             ScaffoldMessenger.of(context)
@@ -94,15 +96,15 @@ class _RegistrationPageState extends State<RegistrationPage> {
                               child: !_hidden
                                   ? const Icon(Icons.remove_red_eye_outlined)
                                   : SvgPicture.asset(AppIcons.eye,
-                                  width: 18,
-                                  height: 18,
-                                  colorFilter: ColorFilter.mode(
-                                      Theme.of(context)
-                                          .appBarTheme
-                                          .titleTextStyle
-                                          ?.color ??
-                                          Colors.white,
-                                      BlendMode.srcIn)),
+                                      width: 18,
+                                      height: 18,
+                                      colorFilter: ColorFilter.mode(
+                                          Theme.of(context)
+                                                  .appBarTheme
+                                                  .titleTextStyle
+                                                  ?.color ??
+                                              Colors.white,
+                                          BlendMode.srcIn)),
                             ),
                           ),
                           hintText: LocaleKeys.password.tr(),

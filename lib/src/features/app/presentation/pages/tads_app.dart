@@ -55,7 +55,11 @@ class _TadsAppState extends State<TadsApp> {
                 supportedLocales: context.supportedLocales,
                 localizationsDelegates: context.localizationDelegates,
                 locale: context.locale,
-                initialRoute: _authenticated ? AppRoutes.home : AppRoutes.login,
+                initialRoute: !_authenticated
+                    ? AppRoutes.login
+                    : LocalStorage.getPinCode.isNotEmpty
+                        ? AppRoutes.checkPinCode
+                        : AppRoutes.setPinCode,
                 routes: AppRoutes.routes,
               ),
             ),
