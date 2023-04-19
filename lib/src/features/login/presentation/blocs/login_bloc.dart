@@ -14,7 +14,7 @@ part 'login_event.dart';
 part 'login_state.dart';
 
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
-  final LoginRepository repo = LoginRepoImpl();
+  LoginRepository repo = LoginRepoImpl();
 
   LoginBloc() : super(const LoginState()) {
     on<InitialEvent>(_init);
@@ -51,5 +51,9 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
 
   void dispose() {
     repo.dispose();
+  }
+
+  void newRepo() {
+    repo = LoginRepoImpl();
   }
 }

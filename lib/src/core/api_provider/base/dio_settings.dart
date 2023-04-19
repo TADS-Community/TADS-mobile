@@ -18,12 +18,13 @@ class DioSettings {
     validateStatus: (status) => status != null && status <= 500,
   );
 
-  void setBaseOptions() {
+  void updateBaseOptions() {
     _dioBaseOptions = BaseOptions(
       baseUrl: AppConsts.BASE_URL_PROD,
       connectTimeout: const Duration(seconds: 30),
       receiveTimeout: const Duration(seconds: 30),
       headers: {
+        "Authorization": LocalStorage.getAccessToken,
         "Accept-Language": LocalStorage.getLocale,
       },
       followRedirects: false,

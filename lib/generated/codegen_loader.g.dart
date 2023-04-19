@@ -30,7 +30,11 @@ class CodegenLoader extends AssetLoader{
   "phone_number": "phone number",
   "or": "or",
   "forgot_password": "Forgot password?",
-  "dark": "Dark"
+  "dark": "Dark",
+  "set_up_pin": "Set up PIN",
+  "create_pin": "Create PIN",
+  "confirm_pin": "Confirm PIN",
+  "enter_pin": "Enter the PIN"
 };
 static const Map<String,dynamic> uz = {
   "login": "Kirish",
@@ -48,7 +52,11 @@ static const Map<String,dynamic> uz = {
   "phone_number": "telefon raqam",
   "or": "yoki",
   "forgot_password": "Parolni unutdingizmi?",
-  "dark": "Tungi"
+  "dark": "Tungi",
+  "set_up_pin": "PIN o'rnatish",
+  "create_pin": "PIN o'ylab toping",
+  "confirm_pin": "PIN ni tasdiqlang",
+  "enter_pin": "PIN ni kiriting"
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"en": en, "uz": uz};
 }

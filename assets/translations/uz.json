@@ -14,5 +14,9 @@
   "phone_number": "telefon raqam",
   "or": "yoki",
   "forgot_password" : "Parolni unutdingizmi?",
-  "dark": "Tungi"
+  "dark": "Tungi",
+  "set_up_pin": "PIN o'rnatish",
+  "create_pin": "PIN o'ylab toping",
+  "confirm_pin": "PIN ni tasdiqlang",
+  "enter_pin": "PIN ni kiriting"
 }

@@ -14,5 +14,9 @@
   "phone_number": "phone number",
   "or": "or",
   "forgot_password": "Forgot password?",
-  "dark": "Dark"
+  "dark": "Dark",
+  "set_up_pin": "Set up PIN",
+  "create_pin": "Create PIN",
+  "confirm_pin": "Confirm PIN",
+  "enter_pin": "Enter the PIN"
 }

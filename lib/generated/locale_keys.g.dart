@@ -17,5 +17,9 @@ abstract class  LocaleKeys {
   static const or = 'or';
   static const forgot_password = 'forgot_password';
   static const dark = 'dark';
+  static const set_up_pin = 'set_up_pin';
+  static const create_pin = 'create_pin';
+  static const confirm_pin = 'confirm_pin';
+  static const enter_pin = 'enter_pin';
 
 }

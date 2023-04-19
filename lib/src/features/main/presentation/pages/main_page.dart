@@ -13,7 +13,7 @@ class MainPage extends StatelessWidget {
       itemBuilder: (_, index) {
         return DonationItem(
           onTap: () {
-            Navigator.of(context).pushNamed(AppRoutes.register);
+            Navigator.of(context).pushNamed(AppRoutes.login);
           },
           cacheKey: 'cacheKey',
           imageUrl: 'https://cdn.uzd.udevs.io/uzdigital/images/ec80c248-ddb8-4b68-98b1-0d59e9a1acdd.jpg',

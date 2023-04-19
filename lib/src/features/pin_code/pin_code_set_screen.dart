@@ -1,8 +1,10 @@
 import 'dart:async';
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_pin_code_widget/flutter_pin_code_widget.dart';
+import 'package:tads_app/generated/locale_keys.g.dart';
 import 'package:tads_app/src/config/routes/app_routes.dart';
 import 'package:tads_app/src/core/local_source/local_storage.dart';
 import 'package:tads_app/src/features/app/presentation/blocs/app_bloc.dart';
@@ -17,7 +19,7 @@ class PinCodeSetPage extends StatefulWidget {
 class _PinCodeSetPageState extends State<PinCodeSetPage> {
   String temp = '';
   StreamController<bool> streamController = StreamController();
-  String commandText = 'Create PIN';
+  String commandText = LocaleKeys.create_pin.tr();
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +30,7 @@ class _PinCodeSetPageState extends State<PinCodeSetPage> {
           children: [
             const SizedBox(height: 40),
             Text(
-              'Set up PIN',
+              LocaleKeys.set_up_pin.tr(),
               style: Theme.of(context).textTheme.headlineMedium,
             ),
             const SizedBox(height: 20),
@@ -48,7 +50,7 @@ class _PinCodeSetPageState extends State<PinCodeSetPage> {
                       temp = pin;
                       streamController.add(true);
                       setState(() {
-                        commandText = 'Confirm PIN';
+                        commandText = LocaleKeys.confirm_pin.tr();
                       });
                     } else if (temp == pin) {
                       LocalStorage.setPinCode(pin);
@@ -58,7 +60,7 @@ class _PinCodeSetPageState extends State<PinCodeSetPage> {
                     } else {
                       setState(() {
                         temp = '';
-                        commandText = 'Create PIN';
+                        commandText = LocaleKeys.create_pin.tr();
                       });
                     }
                   }

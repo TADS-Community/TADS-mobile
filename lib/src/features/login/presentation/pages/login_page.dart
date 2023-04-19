@@ -64,13 +64,20 @@ class _LoginPageState extends State<LoginPage> {
                   children: [
                     kHeight48,
                     IconButton(
-                      onPressed: () {
-                        showDialog(
+                      onPressed: () async {
+                        var prev = context.locale.languageCode;
+                        await showDialog(
                           context: context,
                           builder: (context) => SettingsDialog(
-                            language: context.locale.languageCode,
+                            language: prev,
                           ),
-                        );
+                        ).then((value) async {
+                          if (context.locale.languageCode != prev) {
+                            bloc
+                              ..dispose()
+                              ..newRepo();
+                          }
+                        });
                       },
                       icon: const Icon(Icons.settings),
                     ),

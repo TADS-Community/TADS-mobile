@@ -3,6 +3,7 @@ import 'package:retrofit/retrofit.dart';
 import 'package:tads_app/src/config/constants/constants.dart';
 import 'package:tads_app/src/core/api_provider/base/dio_settings.dart';
 import 'package:tads_app/src/core/get_it/service_locator.dart';
+import 'package:tads_app/src/core/local_source/local_storage.dart';
 import 'package:tads_app/src/features/common/data/models/auth_post_model.dart';
 import 'package:tads_app/src/features/login/data/models/login_response_model.dart';
 
@@ -24,6 +25,11 @@ abstract class LoginClient {
   }
 
   factory LoginClient(Dio dio, String baseUrl) {
+    dio.options.headers = {
+      "Authorization": LocalStorage.getAccessToken,
+      "Accept-Language": LocalStorage.getLocale,
+    };
+
     return _LoginClient(dio, baseUrl: baseUrl);
   }
 
