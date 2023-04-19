@@ -11,6 +11,13 @@ class AppConsts {
   );
 
   static const BASE_URL_PROD = 'https://tads.mamajonov.uz/';
+
+  static Size get size => _size ?? const Size(0, 0);
+  static Size? _size;
+
+  static setSize(BuildContext context) async {
+    _size ??= MediaQuery.of(context).size;
+  }
 }
 
 const appName = 'TADS';

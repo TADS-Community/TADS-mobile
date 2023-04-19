@@ -34,7 +34,10 @@ class CodegenLoader extends AssetLoader{
   "set_up_pin": "Set up PIN",
   "create_pin": "Create PIN",
   "confirm_pin": "Confirm PIN",
-  "enter_pin": "Enter the PIN"
+  "enter_pin": "Enter the PIN",
+  "main": "Main",
+  "search": "Search",
+  "profile": "Profile"
 };
 static const Map<String,dynamic> uz = {
   "login": "Kirish",
@@ -56,7 +59,10 @@ static const Map<String,dynamic> uz = {
   "set_up_pin": "PIN o'rnatish",
   "create_pin": "PIN o'ylab toping",
   "confirm_pin": "PIN ni tasdiqlang",
-  "enter_pin": "PIN ni kiriting"
+  "enter_pin": "PIN ni kiriting",
+  "main": "Asosiy",
+  "search": "Qidirish",
+  "profile": "Profil"
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"en": en, "uz": uz};
 }

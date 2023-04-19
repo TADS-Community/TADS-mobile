@@ -1,5 +1,6 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:tads_app/src/config/constants/constants.dart';
+import 'package:tads_app/generated/locale_keys.g.dart';
 import 'package:tads_app/src/features/main/presentation/pages/main_page.dart';
 import 'package:tads_app/src/features/profile/presetation/pages/profile_page.dart';
 import 'package:tads_app/src/features/search/presentation/pages/search_page.dart';
@@ -28,9 +29,6 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text(appName),
-      ),
       body: TabBarView(
         controller: _controller,
         physics: const NeverScrollableScrollPhysics(),
@@ -41,23 +39,23 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
         ],
       ),
       bottomNavigationBar: NavigationBar(
-        labelBehavior: NavigationDestinationLabelBehavior.alwaysShow,
+        labelBehavior: NavigationDestinationLabelBehavior.alwaysHide,
         onDestinationSelected: (index) {
           _controller.animateTo(index);
         },
         selectedIndex: _currentIndex,
-        destinations: const [
+        destinations: [
           NavigationDestination(
-            icon: Icon(Icons.home),
-            label: 'Home',
+            icon: const Icon(Icons.home),
+            label: LocaleKeys.main.tr(),
           ),
           NavigationDestination(
-            icon: Icon(Icons.add_box),
-            label: 'Add',
+            icon: const Icon(Icons.search),
+            label: LocaleKeys.search.tr(),
           ),
           NavigationDestination(
-            icon: Icon(Icons.person),
-            label: 'Profile',
+            icon: const Icon(Icons.person),
+            label: LocaleKeys.profile.tr(),
           ),
         ],
       ),
