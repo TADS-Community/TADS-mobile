@@ -67,37 +67,49 @@ class _RegistrationPageState extends State<RegistrationPage> {
                 padding: const EdgeInsets.symmetric(horizontal: 16),
                 child: Form(
                   key: _formKey,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                  child: Stack(
                     children: [
-                      AppTextInput(
-                        maxLength: 32,
-                        controller: _controllerPassword,
-                        validator: ((s) {
-                          if (!BaseFunctions.validPassword(s ?? '')) {
-                            return LocaleKeys.password_requirement.tr();
-                          }
-                          return null;
-                        }),
-                        hidden: _hidden,
-                        onTapSuffix: () {
-                          setState(() {
-                            _hidden = !_hidden;
-                          });
-                        },
-                        hintText: LocaleKeys.password.tr(),
-                        suffixIcon: Icons.remove_red_eye_outlined,
+                      Positioned(
+                        top: 48,
+                        child: IconButton(
+                          onPressed: () => Navigator.pop(context),
+                          icon: const Icon(Icons.arrow_back),
+                        ),
                       ),
-                      kHeight24,
-                      AppElevatedButton(
-                        onTap: () {
-                          if (_formKey.currentState?.validate() ?? false) {
-                            bloc.add(RegisterEvent(_controllerPassword.text));
-                          }
-                        },
-                        text: LocaleKeys.enter.tr(),
-                        isLoading: state.statusReg.isInProgress,
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          AppTextInput(
+                            maxLength: 32,
+                            controller: _controllerPassword,
+                            validator: ((s) {
+                              if (!BaseFunctions.validPassword(s ?? '')) {
+                                return LocaleKeys.password_requirement.tr();
+                              }
+                              return null;
+                            }),
+                            hidden: _hidden,
+                            onTapSuffix: () {
+                              setState(() {
+                                _hidden = !_hidden;
+                              });
+                            },
+                            hintText: LocaleKeys.password.tr(),
+                            suffixIcon: Icons.remove_red_eye_outlined,
+                          ),
+                          kHeight24,
+                          AppElevatedButton(
+                            onTap: () {
+                              if (_formKey.currentState?.validate() ?? false) {
+                                bloc.add(
+                                    RegisterEvent(_controllerPassword.text));
+                              }
+                            },
+                            text: LocaleKeys.enter.tr(),
+                            isLoading: state.statusReg.isInProgress,
+                          ),
+                        ],
                       ),
                     ],
                   ),
