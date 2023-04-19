@@ -1,5 +1,5 @@
 class AppIcons {
   AppIcons._();
 
-  static const eye = 'assets/icons/svg/eye_slash.svg';
+  static const eye_slash = 'assets/icons/svg/eye_slash.svg';
 }

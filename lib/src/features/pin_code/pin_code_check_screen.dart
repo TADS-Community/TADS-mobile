@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_pin_code_widget/flutter_pin_code_widget.dart';
+import 'package:local_auth/local_auth.dart';
 import 'package:tads_app/src/config/constants/constants.dart';
 import 'package:tads_app/src/config/routes/app_routes.dart';
 import 'package:tads_app/src/core/local_source/local_storage.dart';
@@ -14,6 +15,7 @@ class PinCodeCheckPage extends StatefulWidget {
 }
 
 class _PinCodeCheckPageState extends State<PinCodeCheckPage> {
+  final LocalAuthentication auth = LocalAuthentication();
   Color enterColor = Colors.greenAccent;
   String commandText = 'Enter the PIN';
 
@@ -53,6 +55,23 @@ class _PinCodeCheckPageState extends State<PinCodeCheckPage> {
                     });
                   }
                 },
+                centerBottomWidget: IconButton(
+                  icon: const Icon(
+                    Icons.fingerprint,
+                    size: 40,
+                  ),
+                  onPressed: () async {
+                    final bool canAuthenticateWithBiometrics =
+                        await auth.canCheckBiometrics;
+                    final bool canAuthenticate =
+                        canAuthenticateWithBiometrics ||
+                            await auth.isDeviceSupported();
+                    var list = await auth.getAvailableBiometrics();
+                    for (var element in list) {
+                      print(element);
+                    }
+                  },
+                ),
                 onEnter: (pin, _) {
                   // callback user pressed enter
                 },

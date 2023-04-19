@@ -1,14 +1,14 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:formz/formz.dart';
 import 'package:tads_app/generated/locale_keys.g.dart';
 import 'package:tads_app/src/config/constants/constants.dart';
 import 'package:tads_app/src/config/routes/app_routes.dart';
-import 'package:tads_app/src/config/theme/app_icons.dart';
 import 'package:tads_app/src/core/local_source/local_storage.dart';
 import 'package:tads_app/src/core/utils/base_functions.dart';
+import 'package:tads_app/src/features/common/presentation/components/buttons/app_elevated_button.dart';
+import 'package:tads_app/src/features/common/presentation/components/text_inputs/app_text_input.dart';
 import 'package:tads_app/src/features/registration/presentation/blocs/registration_bloc.dart';
 import 'package:tads_app/src/features/registration/presentation/widgets/success_dialog.dart';
 
@@ -71,7 +71,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      TextFormField(
+                      AppTextInput(
                         maxLength: 32,
                         controller: _controllerPassword,
                         validator: ((s) {
@@ -80,54 +80,24 @@ class _RegistrationPageState extends State<RegistrationPage> {
                           }
                           return null;
                         }),
-                        obscureText: _hidden,
-                        decoration: InputDecoration(
-                          suffixIcon: GestureDetector(
-                            behavior: HitTestBehavior.opaque,
-                            onTap: () {
-                              setState(() {
-                                _hidden = !_hidden;
-                              });
-                            },
-                            child: AnimatedSwitcher(
-                              duration: const Duration(microseconds: 1000),
-                              switchInCurve: Curves.easeIn,
-                              switchOutCurve: Curves.easeOut,
-                              child: !_hidden
-                                  ? const Icon(Icons.remove_red_eye_outlined)
-                                  : SvgPicture.asset(AppIcons.eye,
-                                      width: 18,
-                                      height: 18,
-                                      colorFilter: ColorFilter.mode(
-                                          Theme.of(context)
-                                                  .appBarTheme
-                                                  .titleTextStyle
-                                                  ?.color ??
-                                              Colors.white,
-                                          BlendMode.srcIn)),
-                            ),
-                          ),
-                          hintText: LocaleKeys.password.tr(),
-                          counterText: '',
-                        ),
+                        hidden: _hidden,
+                        onTapSuffix: () {
+                          setState(() {
+                            _hidden = !_hidden;
+                          });
+                        },
+                        hintText: LocaleKeys.password.tr(),
+                        suffixIcon: Icons.remove_red_eye_outlined,
                       ),
                       kHeight24,
-                      ElevatedButton(
-                        onPressed: () {
+                      AppElevatedButton(
+                        onTap: () {
                           if (_formKey.currentState?.validate() ?? false) {
                             bloc.add(RegisterEvent(_controllerPassword.text));
                           }
                         },
-                        child: state.statusReg.isInProgress
-                            ? const SizedBox(
-                                width: 20,
-                                height: 20,
-                                child: CircularProgressIndicator.adaptive(
-                                  backgroundColor: Colors.white,
-                                  strokeWidth: 3,
-                                ),
-                              )
-                            : Text(LocaleKeys.enter.tr()),
+                        text: LocaleKeys.enter.tr(),
+                        isLoading: state.statusReg.isInProgress,
                       ),
                     ],
                   ),
