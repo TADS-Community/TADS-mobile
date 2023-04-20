@@ -10,7 +10,7 @@ class AppConsts {
     debugLabel: "TADS",
   );
 
-  static const BASE_URL_PROD = 'https://tads.mamajonov.uz/';
+  static const BASE_URL_PROD = '';
 
   static Size get size => _size ?? const Size(0, 0);
   static Size? _size;

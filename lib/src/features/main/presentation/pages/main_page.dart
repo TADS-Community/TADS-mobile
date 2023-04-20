@@ -1,13 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:tads_app/src/config/constants/constants.dart';
-import 'package:tads_app/src/config/routes/app_routes.dart';
 import 'package:tads_app/src/features/main/presentation/widgets/donation_item.dart';
 
-class MainPage extends StatelessWidget {
-  const MainPage({Key? key}) : super(key: key);
+class MainPage extends StatefulWidget {
+  const MainPage({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  State<MainPage> createState() => _MainPageState();
+}
+
+class _MainPageState extends State<MainPage> with AutomaticKeepAliveClientMixin {
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     AppConsts.setSize(context);
     return Scaffold(
       appBar: AppBar(
@@ -23,7 +31,7 @@ class MainPage extends StatelessWidget {
         itemBuilder: (_, index) {
           return DonationItem(
             onTap: () {
-              Navigator.of(context).pushNamed(AppRoutes.login);
+              // Navigator.of(context).pushNamed(AppRoutes.login);
             },
             cacheKey: 'cacheKey',
             imageUrl:
@@ -38,4 +46,7 @@ class MainPage extends StatelessWidget {
       ),
     );
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }
