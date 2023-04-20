@@ -47,9 +47,8 @@ class AppTextInput extends StatelessWidget {
                           height: 18,
                           colorFilter: ColorFilter.mode(
                             Theme.of(context)
-                                    .appBarTheme
-                                    .titleTextStyle
-                                    ?.color ??
+                                    .inputDecorationTheme
+                                    .suffixIconColor ??
                                 Colors.white,
                             BlendMode.srcIn,
                           ),

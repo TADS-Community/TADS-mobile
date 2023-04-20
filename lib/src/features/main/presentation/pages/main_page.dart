@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tads_app/src/config/constants/constants.dart';
+import 'package:tads_app/src/config/routes/app_routes.dart';
 import 'package:tads_app/src/features/main/presentation/widgets/donation_item.dart';
 
 class MainPage extends StatefulWidget {
@@ -19,6 +20,7 @@ class _MainPageState extends State<MainPage> with AutomaticKeepAliveClientMixin 
     AppConsts.setSize(context);
     return Scaffold(
       appBar: AppBar(
+        elevation: 6,
         actions: [
           IconButton(
             icon: const Icon(Icons.notifications),
@@ -31,7 +33,7 @@ class _MainPageState extends State<MainPage> with AutomaticKeepAliveClientMixin 
         itemBuilder: (_, index) {
           return DonationItem(
             onTap: () {
-              // Navigator.of(context).pushNamed(AppRoutes.login);
+              Navigator.of(context).pushNamed(AppRoutes.login);
             },
             cacheKey: 'cacheKey',
             imageUrl:

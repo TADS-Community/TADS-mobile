@@ -16,6 +16,8 @@ class AppTheme {
     scaffoldBackgroundColor: AppColors.white,
     appBarTheme: AppBarTheme(
       color: Colors.blue,
+      elevation: 2,
+      actionsIconTheme: const IconThemeData(color: Colors.white),
       titleTextStyle: GoogleFonts.spaceMono(
         color: Colors.white,
         fontSize: 20,
@@ -47,6 +49,7 @@ class AppTheme {
         selectionColor: Colors.blue,
         cursorColor: Colors.blue),
     inputDecorationTheme: InputDecorationTheme(
+      suffixIconColor: AppColors.appIconBackground,
       focusColor: Colors.blue,
       focusedBorder: const OutlineInputBorder(
         borderSide: BorderSide(color: Colors.blue),
@@ -84,6 +87,12 @@ class AppTheme {
         foregroundColor: Colors.black,
       ),
     ),
+    dialogTheme: const DialogTheme(
+      backgroundColor: Colors.white,
+      surfaceTintColor: Colors.white,
+    ),
+    outlinedButtonTheme: OutlinedButtonThemeData(
+        style: OutlinedButton.styleFrom(foregroundColor: Colors.black)),
   );
 
   static final ThemeData dark = ThemeData(
@@ -96,6 +105,8 @@ class AppTheme {
         const CupertinoThemeData(brightness: Brightness.dark),
     appBarTheme: AppBarTheme(
       color: const Color(0xff111111),
+      elevation: 2,
+      actionsIconTheme: const IconThemeData(color: Colors.white),
       titleTextStyle: GoogleFonts.spaceMono(
         color: Colors.white,
         fontSize: 20,
@@ -107,8 +118,6 @@ class AppTheme {
     primaryColor: const Color(0xff1B1B1B),
     primaryColorDark: const Color(0xff111111),
     primaryColorLight: const Color(0xff2D2D2D),
-    outlinedButtonTheme: OutlinedButtonThemeData(
-        style: OutlinedButton.styleFrom(foregroundColor: Colors.white)),
     colorScheme: const ColorScheme.dark(),
     navigationBarTheme:
         const NavigationBarThemeData(backgroundColor: Color(0xff111111)),
@@ -117,6 +126,7 @@ class AppTheme {
         selectionColor: Colors.green,
         cursorColor: Colors.greenAccent),
     inputDecorationTheme: InputDecorationTheme(
+      suffixIconColor: Colors.white,
       focusColor: Colors.green,
       focusedBorder: const OutlineInputBorder(
         borderSide: BorderSide(color: Colors.greenAccent),
@@ -157,5 +167,11 @@ class AppTheme {
         foregroundColor: Colors.white,
       ),
     ),
+    dialogTheme: const DialogTheme(
+      backgroundColor: Color(0xff1B1B1B),
+      surfaceTintColor: Color(0xff1B1B1B),
+    ),
+    outlinedButtonTheme: OutlinedButtonThemeData(
+        style: OutlinedButton.styleFrom(foregroundColor: Colors.white)),
   );
 }

@@ -31,16 +31,19 @@ class _TadsAppState extends State<TadsApp> with WidgetsBindingObserver {
   void didChangeAppLifecycleState(AppLifecycleState state) {
     switch (state) {
       case AppLifecycleState.resumed:
+        print('AppLifecycleState.resumed');
         break;
       case AppLifecycleState.inactive:
+        print('AppLifecycleState.inactive');
         break;
       case AppLifecycleState.paused:
+        print('AppLifecycleState.paused');
         break;
       case AppLifecycleState.detached:
+        print('AppLifecycleState.detached');
         break;
     }
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -52,6 +55,9 @@ class _TadsAppState extends State<TadsApp> with WidgetsBindingObserver {
             gestures: const [GestureType.onTap],
             child: AnnotatedRegion(
               value: SystemUiOverlayStyle(
+                statusBarIconBrightness: LocalStorage.getThemeMode == dark
+                    ? Brightness.light
+                    : Brightness.dark,
                 systemNavigationBarColor: LocalStorage.getThemeMode == dark
                     ? Colors.black
                     : Colors.white,

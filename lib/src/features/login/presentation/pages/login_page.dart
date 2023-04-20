@@ -66,7 +66,7 @@ class _LoginPageState extends State<LoginPage> {
                     IconButton(
                       onPressed: () async {
                         var prev = context.locale.languageCode;
-                        await showDialog(
+                        showDialog(
                           context: context,
                           builder: (context) => SettingsDialog(
                             language: prev,
