@@ -93,6 +93,9 @@ class AppTheme {
     ),
     outlinedButtonTheme: OutlinedButtonThemeData(
         style: OutlinedButton.styleFrom(foregroundColor: Colors.black)),
+    navigationBarTheme: const NavigationBarThemeData(
+      surfaceTintColor: Colors.white,
+    ),
   );
 
   static final ThemeData dark = ThemeData(
@@ -104,7 +107,7 @@ class AppTheme {
     cupertinoOverrideTheme:
         const CupertinoThemeData(brightness: Brightness.dark),
     appBarTheme: AppBarTheme(
-      color: const Color(0xff111111),
+      surfaceTintColor: const Color(0xff111111),
       elevation: 2,
       actionsIconTheme: const IconThemeData(color: Colors.white),
       titleTextStyle: GoogleFonts.spaceMono(
@@ -119,8 +122,6 @@ class AppTheme {
     primaryColorDark: const Color(0xff111111),
     primaryColorLight: const Color(0xff2D2D2D),
     colorScheme: const ColorScheme.dark(),
-    navigationBarTheme:
-        const NavigationBarThemeData(backgroundColor: Color(0xff111111)),
     textSelectionTheme: const TextSelectionThemeData(
         selectionHandleColor: Colors.green,
         selectionColor: Colors.green,
@@ -173,5 +174,7 @@ class AppTheme {
     ),
     outlinedButtonTheme: OutlinedButtonThemeData(
         style: OutlinedButton.styleFrom(foregroundColor: Colors.white)),
+    navigationBarTheme:
+        const NavigationBarThemeData(surfaceTintColor: Color(0xff111111)),
   );
 }

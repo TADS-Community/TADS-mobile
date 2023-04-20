@@ -20,7 +20,6 @@ class _MainPageState extends State<MainPage> with AutomaticKeepAliveClientMixin 
     AppConsts.setSize(context);
     return Scaffold(
       appBar: AppBar(
-        elevation: 6,
         actions: [
           IconButton(
             icon: const Icon(Icons.notifications),
