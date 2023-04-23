@@ -16,7 +16,7 @@ class TadsApp extends StatefulWidget {
   State<TadsApp> createState() => _TadsAppState();
 }
 
-class _TadsAppState extends State<TadsApp> with WidgetsBindingObserver {
+class _TadsAppState extends State<TadsApp> {
   bool _authenticated = false;
   late AppBloc bloc;
 
@@ -25,24 +25,6 @@ class _TadsAppState extends State<TadsApp> with WidgetsBindingObserver {
     super.initState();
     bloc = AppBloc(LocalStorage.getThemeMode);
     _authenticated = LocalStorage.getID != -1;
-  }
-
-  @override
-  void didChangeAppLifecycleState(AppLifecycleState state) {
-    switch (state) {
-      case AppLifecycleState.resumed:
-        print('AppLifecycleState.resumed');
-        break;
-      case AppLifecycleState.inactive:
-        print('AppLifecycleState.inactive');
-        break;
-      case AppLifecycleState.paused:
-        print('AppLifecycleState.paused');
-        break;
-      case AppLifecycleState.detached:
-        print('AppLifecycleState.detached');
-        break;
-    }
   }
 
   @override
@@ -67,6 +49,7 @@ class _TadsAppState extends State<TadsApp> with WidgetsBindingObserver {
                         : Brightness.dark,
               ),
               child: MaterialApp(
+                navigatorKey: AppConsts.navigatorKey,
                 theme: AppTheme.light,
                 darkTheme: AppTheme.dark,
                 themeMode:
