@@ -7,4 +7,6 @@ class StorageKeys {
   static const themeMode = "themeMode";
   static const id = "id";
   static const pinCode = "pinCode";
+  static const lastKnownStateKey = "lastKnownStateKey";
+  static const backgroundedTimeKey = "backgroundedTimeKey";
 }

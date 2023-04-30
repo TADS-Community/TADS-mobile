@@ -2,14 +2,12 @@ import 'dart:async';
 
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_pin_code_widget/flutter_pin_code_widget.dart';
 import 'package:tads_app/generated/locale_keys.g.dart';
 import 'package:tads_app/src/config/constants/constants.dart';
 import 'package:tads_app/src/config/routes/app_routes.dart';
 import 'package:tads_app/src/config/theme/app_colors.dart';
 import 'package:tads_app/src/core/local_source/local_storage.dart';
-import 'package:tads_app/src/features/app/presentation/blocs/app_bloc.dart';
 
 class PinCodeSetPage extends StatefulWidget {
   const PinCodeSetPage({Key? key}) : super(key: key);
@@ -62,7 +60,6 @@ class _PinCodeSetPageState extends State<PinCodeSetPage> {
                       });
                     } else if (temp == pin) {
                       LocalStorage.setPinCode(pin);
-                      context.read<AppBloc>().add(ChangeLockEvent());
                       Navigator.of(context).pushNamedAndRemoveUntil(
                           AppRoutes.home, (route) => false);
                     } else {

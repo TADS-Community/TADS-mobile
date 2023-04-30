@@ -46,6 +46,14 @@ class LocalStorage {
     await _localStorage?.setString(StorageKeys.pinCode, value);
   }
 
+  static Future<void> setLastKnownStateKey(int value) async {
+    await _localStorage?.setInt(StorageKeys.lastKnownStateKey, value);
+  }
+
+  static Future<void> setBackgroundedTimeKey(int value) async {
+    await _localStorage?.setInt(StorageKeys.backgroundedTimeKey, value);
+  }
+
   static String get getLocale =>
       _localStorage?.getString(StorageKeys.locale) ?? 'uz';
 
@@ -61,11 +69,20 @@ class LocalStorage {
   static String get getThemeMode =>
       _localStorage?.getString(StorageKeys.themeMode) ?? 'dark';
 
-  static int get getID =>
-      _localStorage?.getInt(StorageKeys.id) ?? -1;
+  static int get getID => _localStorage?.getInt(StorageKeys.id) ?? -1;
 
   static String get getPinCode =>
       _localStorage?.getString(StorageKeys.pinCode) ?? '';
+
+  static int? get getLastKnownStateKey =>
+      _localStorage?.getInt(StorageKeys.lastKnownStateKey);
+
+  static int get getBackgroundedTimeKey =>
+      _localStorage?.getInt(StorageKeys.backgroundedTimeKey) ?? 0;
+
+  static Future<void> removeBackgroundedTimeKey() async {
+    await _localStorage?.remove(StorageKeys.backgroundedTimeKey);
+  }
 
   static Future<void> clearProfile() async {
     await _localStorage?.remove(StorageKeys.accessToken);

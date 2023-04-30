@@ -1,7 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_pin_code_widget/flutter_pin_code_widget.dart';
 import 'package:local_auth/local_auth.dart';
 import 'package:tads_app/generated/locale_keys.g.dart';
@@ -9,7 +8,6 @@ import 'package:tads_app/src/config/constants/constants.dart';
 import 'package:tads_app/src/config/routes/app_routes.dart';
 import 'package:tads_app/src/config/theme/app_colors.dart';
 import 'package:tads_app/src/core/local_source/local_storage.dart';
-import 'package:tads_app/src/features/app/presentation/blocs/app_bloc.dart';
 import 'package:local_auth/error_codes.dart' as auth_error;
 
 class PinCodeCheckPage extends StatefulWidget {
@@ -25,7 +23,13 @@ class _PinCodeCheckPageState extends State<PinCodeCheckPage> {
   String commandText = LocaleKeys.enter_pin.tr();
 
   @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
+    final fromHome = ModalRoute.of(context)!.settings.arguments as bool?;
     return Scaffold(
       body: SafeArea(
         child: Column(
@@ -50,11 +54,14 @@ class _PinCodeCheckPageState extends State<PinCodeCheckPage> {
                 onChangedPin: (pin) {
                   if (pin.length == 4) {
                     if (pin == LocalStorage.getPinCode) {
-                      context.read<AppBloc>().add(ChangeLockEvent());
-                      Navigator.of(context).pushNamedAndRemoveUntil(
-                        AppRoutes.home,
-                        (route) => false,
-                      );
+                      if (fromHome == true) {
+                        Navigator.pop(context);
+                      } else {
+                        Navigator.of(context).pushNamedAndRemoveUntil(
+                          AppRoutes.home,
+                          (route) => false,
+                        );
+                      }
                     } else {
                       setState(() {
                         enterColor = Colors.red;

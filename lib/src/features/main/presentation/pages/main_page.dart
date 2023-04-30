@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:tads_app/src/config/constants/constants.dart';
-import 'package:tads_app/src/config/routes/app_routes.dart';
 import 'package:tads_app/src/features/main/presentation/widgets/donation_item.dart';
 
 class MainPage extends StatefulWidget {
@@ -12,8 +11,8 @@ class MainPage extends StatefulWidget {
   State<MainPage> createState() => _MainPageState();
 }
 
-class _MainPageState extends State<MainPage> with AutomaticKeepAliveClientMixin {
-
+class _MainPageState extends State<MainPage>
+    with AutomaticKeepAliveClientMixin {
   @override
   Widget build(BuildContext context) {
     super.build(context);
@@ -31,9 +30,7 @@ class _MainPageState extends State<MainPage> with AutomaticKeepAliveClientMixin 
         padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 12),
         itemBuilder: (_, index) {
           return DonationItem(
-            onTap: () {
-              Navigator.of(context).pushNamed(AppRoutes.login);
-            },
+            onTap: () {},
             cacheKey: 'cacheKey',
             width: AppConsts.size.width,
           );
