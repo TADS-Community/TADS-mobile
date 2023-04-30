@@ -10,10 +10,14 @@ RegisterResponseModel _$RegisterResponseModelFromJson(
         Map<String, dynamic> json) =>
     RegisterResponseModel(
       uid: json['uid'] as int,
+      access: json['access'] as String,
+      refresh: json['refresh'] as String,
     );
 
 Map<String, dynamic> _$RegisterResponseModelToJson(
         RegisterResponseModel instance) =>
     <String, dynamic>{
+      'refresh': instance.refresh,
+      'access': instance.access,
       'uid': instance.uid,
     };

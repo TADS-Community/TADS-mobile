@@ -69,5 +69,8 @@ class LocalStorage {
 
   static Future<void> clearProfile() async {
     await _localStorage?.remove(StorageKeys.accessToken);
+    await _localStorage?.remove(StorageKeys.refreshToken);
+    await _localStorage?.remove(StorageKeys.pinCode);
+    await _localStorage?.remove(StorageKeys.id);
   }
 }

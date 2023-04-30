@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:formz/formz.dart';
+import 'package:tads_app/src/core/local_source/local_storage.dart';
 import 'package:tads_app/src/features/common/data/models/auth_post_model.dart';
 import 'package:tads_app/src/features/registration/data/repos/register_repo_impl.dart';
 import 'package:tads_app/src/features/registration/domain/repositories/register_repository.dart';
@@ -28,6 +29,8 @@ class RegistrationBloc extends Bloc<RegistrationEvent, RegistrationState> {
     add(const ChangeStatusEvent(FormzSubmissionStatus.inProgress));
     var res = await repo.register(AuthPostModel(password: event.password));
     if (res.isRight) {
+      LocalStorage.setAccessToken(res.right.access);
+      LocalStorage.setRefreshToken(res.right.refresh);
       emit(state.copWith(
         id: res.right.uid,
         statusReg: FormzSubmissionStatus.success,

@@ -6,7 +6,7 @@ import 'package:formz/formz.dart';
 import 'package:meta/meta.dart';
 import 'package:tads_app/src/core/local_source/local_storage.dart';
 import 'package:tads_app/src/features/common/data/models/auth_post_model.dart';
-import 'package:tads_app/src/features/login/data/repos/login_repo_impl.dart';
+import 'package:tads_app/src/features/login/data/repositories/login_repo_impl.dart';
 import 'package:tads_app/src/features/login/domain/repositories/login_repository.dart';
 
 part 'login_event.dart';

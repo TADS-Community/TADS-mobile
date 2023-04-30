@@ -21,7 +21,7 @@ class _LoginClient implements LoginClient {
   String? baseUrl;
 
   @override
-  Future<LoginResponseModel> login(model) async {
+  Future<LoginResponseModel> login(AuthPostModel model) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
