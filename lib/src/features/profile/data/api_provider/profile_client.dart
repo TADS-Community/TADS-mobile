@@ -5,6 +5,7 @@ import 'package:tads_app/src/core/api_provider/base/dio_settings.dart';
 import 'package:tads_app/src/core/get_it/service_locator.dart';
 import 'package:tads_app/src/core/local_source/local_storage.dart';
 import 'package:tads_app/src/features/profile/data/models/user_model.dart';
+import 'package:tads_app/src/features/profile/data/models/user_update_model.dart';
 
 part 'profile_client.g.dart';
 
@@ -40,5 +41,5 @@ abstract class ProfileClient {
   Future<UserModel> getUser();
 
   @PUT("userdetail/")
-  Future<UserModel> updateUser(@Body() UserModel body);
+  Future<UserModel> updateUser(@Body() UserUpdateModel body);
 }

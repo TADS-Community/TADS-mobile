@@ -4,9 +4,11 @@ import 'package:flutter/services.dart';
 class ProfileTextInput extends StatefulWidget {
   final String? Function(String?)? validator;
   final bool hidden;
-  final VoidCallback onTapSuffix;
+  final Function(String) onTapSuffix;
   final String hintText;
   final String text;
+  final String? labelText;
+  final Widget? prefixIcon;
   final IconData? suffixIcon;
   final TextInputType? keyboardType;
   final List<TextInputFormatter> inputFormatters;
@@ -17,7 +19,9 @@ class ProfileTextInput extends StatefulWidget {
     required this.onTapSuffix,
     required this.hintText,
     required this.text,
+    this.labelText,
     this.suffixIcon,
+    this.prefixIcon,
     this.keyboardType,
     this.inputFormatters = const [],
     Key? key,
@@ -56,7 +60,10 @@ class _ProfileTextInputState extends State<ProfileTextInput> {
       style: const TextStyle(fontSize: 18),
       cursorColor: Colors.blue,
       decoration: InputDecoration(
+        labelText: widget.labelText,
         hintText: widget.hintText,
+        prefixIconColor: Colors.red,
+        prefixIcon: widget.prefixIcon,
         suffixIcon: _focused
             ? Transform.scale(
                 scale: 0.7,
@@ -68,7 +75,7 @@ class _ProfileTextInputState extends State<ProfileTextInput> {
                   icon: const Icon(Icons.check),
                   onPressed: () {
                     FocusScope.of(context).requestFocus(FocusNode());
-                    widget.onTapSuffix;
+                    widget.onTapSuffix(controller.text);
                   },
                 ),
               )

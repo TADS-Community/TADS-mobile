@@ -44,7 +44,7 @@ class _ProfileClient implements ProfileClient {
   }
 
   @override
-  Future<UserModel> updateUser(UserModel body) async {
+  Future<UserModel> updateUser(UserUpdateModel body) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};

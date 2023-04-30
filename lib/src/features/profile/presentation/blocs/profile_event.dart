@@ -11,3 +11,17 @@ class ChangeStatusEvent extends ProfileEvent {
 
   const ChangeStatusEvent(this.status);
 }
+
+class UpdateUserEvent extends ProfileEvent {
+  final String? firstName;
+  final String? lastName;
+  final String? phone;
+  final String? email;
+
+  const UpdateUserEvent({
+    this.firstName,
+    this.lastName,
+    this.phone,
+    this.email,
+  });
+}

@@ -19,6 +19,7 @@ class ProfilePage extends StatefulWidget {
 
 class _ProfilePageState extends State<ProfilePage>
     with AutomaticKeepAliveClientMixin {
+  final _formKey = GlobalKey<FormState>();
   late ProfileBloc bloc;
   final emailValidator = RegExp(r'^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$');
 
@@ -103,22 +104,35 @@ class _ProfilePageState extends State<ProfilePage>
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           ProfileTextInput(
-                            onTapSuffix: () {},
+                            onTapSuffix: (value) {
+                              if (value != state.user.firstName) {
+                                bloc.add(UpdateUserEvent(firstName: value));
+                              }
+                            },
                             hintText: 'First name',
                             text: state.user.firstName,
                             keyboardType: TextInputType.text,
                           ),
                           const Divider(),
                           ProfileTextInput(
-                            onTapSuffix: () {},
+                            onTapSuffix: (value) {
+                              if (value != state.user.lastName) {
+                                bloc.add(UpdateUserEvent(lastName: value));
+                              }
+                            },
                             hintText: 'Last name',
                             text: state.user.lastName,
                             keyboardType: TextInputType.text,
                           ),
                           const Divider(),
                           ProfileTextInput(
-                            onTapSuffix: () {},
-                            hintText: 'Email',
+                            onTapSuffix: (value) {
+                              if (_formKey.currentState?.validate() ?? false) {
+                                if (value != state.user.email) {
+                                  bloc.add(UpdateUserEvent(email: value));
+                                }
+                              }
+                            },
                             validator: (value) {
                               if (value == null || value.isEmpty) {
                                 return 'Email is required';
@@ -128,18 +142,43 @@ class _ProfilePageState extends State<ProfilePage>
                               }
                               return null;
                             },
+                            hintText: 'Email',
                             text: state.user.email,
                             keyboardType: TextInputType.text,
                           ),
+                          Visibility(
+                            visible: !state.user.emailVerified,
+                            child: Align(
+                              alignment: Alignment.centerRight,
+                              child: OutlinedButton(
+                                onPressed: () {},
+                                child: const Text('Verify email'),
+                              ),
+                            ),
+                          ),
                           const Divider(),
                           ProfileTextInput(
-                            onTapSuffix: () {},
+                            onTapSuffix: (value) {
+                              if (value != state.user.phone) {
+                                bloc.add(UpdateUserEvent(phone: value));
+                              }
+                            },
                             hintText: 'Phone',
                             text: state.user.phone,
                             keyboardType: TextInputType.phone,
                             inputFormatters: [
                               FilteringTextInputFormatter.allow(RegExp(r'\d'))
                             ],
+                          ),
+                          Visibility(
+                            visible: !state.user.emailVerified,
+                            child: Align(
+                              alignment: Alignment.centerRight,
+                              child: OutlinedButton(
+                                onPressed: () {},
+                                child: const Text('Verify phone'),
+                              ),
+                            ),
                           ),
                         ],
                       ),
