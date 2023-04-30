@@ -1,5 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:tads_app/generated/locale_keys.g.dart';
 import 'package:tads_app/src/config/constants/constants.dart';
 
 class SuccessDialog extends StatefulWidget {
@@ -32,7 +34,7 @@ class _SuccessDialogState extends State<SuccessDialog> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                'Your ID:',
+                '${LocaleKeys.your_id.tr()}:',
                 style: GoogleFonts.roboto(),
               ),
               kWidth8,

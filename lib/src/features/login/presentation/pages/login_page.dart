@@ -100,7 +100,8 @@ class _LoginPageState extends State<LoginPage> {
                           maxLength: 20,
                           decoration: InputDecoration(
                             hintText:
-                                'ID, ${LocaleKeys.email.tr()} ${LocaleKeys.or.tr()} ${LocaleKeys.phone_number.tr()}',
+                                'ID, ${LocaleKeys.email.tr().toLowerCase()} ${LocaleKeys.or.tr()} '
+                                '${LocaleKeys.phone_number.tr().toLowerCase()}',
                             counterText: '',
                           ),
                         ),

@@ -1,6 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:tads_app/generated/locale_keys.g.dart';
@@ -8,7 +7,7 @@ import 'package:tads_app/src/config/constants/constants.dart';
 import 'package:tads_app/src/core/local_source/local_storage.dart';
 import 'package:tads_app/src/features/common/presentation/dialogs/settings_dialog.dart';
 import 'package:tads_app/src/features/profile/presentation/blocs/profile_bloc.dart';
-import 'package:tads_app/src/features/profile/presentation/widgets/profile_text_input.dart';
+import 'package:tads_app/src/features/profile/presentation/widgets/user_info_widget.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({Key? key}) : super(key: key);
@@ -21,7 +20,6 @@ class _ProfilePageState extends State<ProfilePage>
     with AutomaticKeepAliveClientMixin {
   final _formKey = GlobalKey<FormState>();
   late ProfileBloc bloc;
-  final emailValidator = RegExp(r'^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$');
 
   @override
   void initState() {
@@ -65,6 +63,7 @@ class _ProfilePageState extends State<ProfilePage>
                 padding: const EdgeInsets.symmetric(horizontal: 16),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
                   children: [
                     kHeight16,
                     Align(
@@ -81,7 +80,7 @@ class _ProfilePageState extends State<ProfilePage>
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          'Your ID:',
+                          '${LocaleKeys.your_id.tr()}:',
                           style: GoogleFonts.roboto(),
                         ),
                         kWidth8,
@@ -92,96 +91,37 @@ class _ProfilePageState extends State<ProfilePage>
                       ],
                     ),
                     kHeight16,
-                    Container(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 16, vertical: 16),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(8),
-                        color: Theme.of(context).primaryColorLight,
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          ProfileTextInput(
-                            onTapSuffix: (value) {
-                              if (value != state.user.firstName) {
-                                bloc.add(UpdateUserEvent(firstName: value));
-                              }
-                            },
-                            hintText: 'First name',
-                            text: state.user.firstName,
-                            keyboardType: TextInputType.text,
-                          ),
-                          const Divider(),
-                          ProfileTextInput(
-                            onTapSuffix: (value) {
-                              if (value != state.user.lastName) {
-                                bloc.add(UpdateUserEvent(lastName: value));
-                              }
-                            },
-                            hintText: 'Last name',
-                            text: state.user.lastName,
-                            keyboardType: TextInputType.text,
-                          ),
-                          const Divider(),
-                          ProfileTextInput(
-                            onTapSuffix: (value) {
-                              if (_formKey.currentState?.validate() ?? false) {
-                                if (value != state.user.email) {
-                                  bloc.add(UpdateUserEvent(email: value));
-                                }
-                              }
-                            },
-                            validator: (value) {
-                              if (value == null || value.isEmpty) {
-                                return 'Email is required';
-                              }
-                              if (!emailValidator.hasMatch(value)) {
-                                return 'Please enter a valid email';
-                              }
-                              return null;
-                            },
-                            hintText: 'Email',
-                            text: state.user.email,
-                            keyboardType: TextInputType.text,
-                          ),
-                          Visibility(
-                            visible: !state.user.emailVerified,
-                            child: Align(
-                              alignment: Alignment.centerRight,
-                              child: OutlinedButton(
-                                onPressed: () {},
-                                child: const Text('Verify email'),
-                              ),
-                            ),
-                          ),
-                          const Divider(),
-                          ProfileTextInput(
-                            onTapSuffix: (value) {
-                              if (value != state.user.phone) {
-                                bloc.add(UpdateUserEvent(phone: value));
-                              }
-                            },
-                            hintText: 'Phone',
-                            text: state.user.phone,
-                            keyboardType: TextInputType.phone,
-                            inputFormatters: [
-                              FilteringTextInputFormatter.allow(RegExp(r'\d'))
-                            ],
-                          ),
-                          Visibility(
-                            visible: !state.user.emailVerified,
-                            child: Align(
-                              alignment: Alignment.centerRight,
-                              child: OutlinedButton(
-                                onPressed: () {},
-                                child: const Text('Verify phone'),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
+                    UserInfoWidget(
+                      firstName: state.user.firstName,
+                      lastName: state.user.lastName,
+                      phone: state.user.phone,
+                      email: state.user.email,
+                      updateFirstname: (value) {
+                        if (value != state.user.firstName) {
+                          bloc.add(UpdateUserEvent(firstName: value));
+                        }
+                      },
+                      updateLastname: (value) {
+                        if (value != state.user.lastName) {
+                          bloc.add(UpdateUserEvent(lastName: value));
+                        }
+                      },
+                      updateEmail: (value) {
+                        if (_formKey.currentState?.validate() ?? false) {
+                          if (value != state.user.email) {
+                            bloc.add(UpdateUserEvent(email: value));
+                          }
+                        }
+                      },
+                      updatePhone: (value) {
+                        if (value != state.user.phone) {
+                          bloc.add(UpdateUserEvent(phone: value));
+                        }
+                      },
+                      emailVerified: state.user.emailVerified,
+                      phoneVerified: state.user.phoneVerified,
+                      verifyEmail: () {},
+                      verifyPhone: () {},
                     ),
                   ],
                 ),

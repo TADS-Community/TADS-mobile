@@ -24,5 +24,9 @@ abstract class  LocaleKeys {
   static const main = 'main';
   static const search = 'search';
   static const profile = 'profile';
+  static const your_id = 'your_id';
+  static const first_name = 'first_name';
+  static const last_name = 'last_name';
+  static const verify = 'verify';
 
 }

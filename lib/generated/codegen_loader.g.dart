@@ -26,8 +26,8 @@ class CodegenLoader extends AssetLoader{
   "error_unknown": "Unknown error",
   "error_server": "Server error",
   "error_internet": "Internet connection error",
-  "email": "email",
-  "phone_number": "phone number",
+  "email": "Email",
+  "phone_number": "Phone number",
   "or": "or",
   "forgot_password": "Forgot password?",
   "dark": "Dark",
@@ -37,7 +37,11 @@ class CodegenLoader extends AssetLoader{
   "enter_pin": "Enter the PIN",
   "main": "Main",
   "search": "Search",
-  "profile": "Profile"
+  "profile": "Profile",
+  "your_id": "Your ID",
+  "first_name": "First name",
+  "last_name": "Last name",
+  "verify": "Verify"
 };
 static const Map<String,dynamic> uz = {
   "login": "Kirish",
@@ -51,8 +55,8 @@ static const Map<String,dynamic> uz = {
   "error_unknown": "Noma'lum xatolik",
   "error_server": "Server xatoligi",
   "error_internet": "Internet bilan xatolik",
-  "email": "email",
-  "phone_number": "telefon raqam",
+  "email": "Email",
+  "phone_number": "Telefon raqam",
   "or": "yoki",
   "forgot_password": "Parolni unutdingizmi?",
   "dark": "Tungi",
@@ -62,7 +66,11 @@ static const Map<String,dynamic> uz = {
   "enter_pin": "PIN ni kiriting",
   "main": "Asosiy",
   "search": "Qidirish",
-  "profile": "Profil"
+  "profile": "Profil",
+  "your_id": "Sizning ID",
+  "first_name": "Ism",
+  "last_name": "Familiya",
+  "verify": "Tasdiqlash"
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"en": en, "uz": uz};
 }

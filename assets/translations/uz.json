@@ -10,8 +10,8 @@
   "error_unknown": "Noma'lum xatolik",
   "error_server": "Server xatoligi",
   "error_internet": "Internet bilan xatolik",
-  "email": "email",
-  "phone_number": "telefon raqam",
+  "email": "Email",
+  "phone_number": "Telefon raqam",
   "or": "yoki",
   "forgot_password" : "Parolni unutdingizmi?",
   "dark": "Tungi",
@@ -21,5 +21,9 @@
   "enter_pin": "PIN ni kiriting",
   "main": "Asosiy",
   "search": "Qidirish",
-  "profile": "Profil"
+  "profile": "Profil",
+  "your_id": "Sizning ID",
+  "first_name": "Ism",
+  "last_name": "Familiya",
+  "verify": "Tasdiqlash"
 }
