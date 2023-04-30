@@ -41,7 +41,9 @@ class CodegenLoader extends AssetLoader{
   "your_id": "Your ID",
   "first_name": "First name",
   "last_name": "Last name",
-  "verify": "Verify"
+  "verify": "Verify",
+  "exit": "Exit",
+  "unable_to_load": "Unable to load data"
 };
 static const Map<String,dynamic> uz = {
   "login": "Kirish",
@@ -70,7 +72,9 @@ static const Map<String,dynamic> uz = {
   "your_id": "Sizning ID",
   "first_name": "Ism",
   "last_name": "Familiya",
-  "verify": "Tasdiqlash"
+  "verify": "Tasdiqlash",
+  "exit": "Chiqish",
+  "unable_to_load": "Ma'lumotni olishda xatolik"
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"en": en, "uz": uz};
 }

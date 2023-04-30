@@ -25,5 +25,7 @@
   "your_id": "Sizning ID",
   "first_name": "Ism",
   "last_name": "Familiya",
-  "verify": "Tasdiqlash"
+  "verify": "Tasdiqlash",
+  "exit": "Chiqish",
+  "unable_to_load": "Ma'lumotni olishda xatolik"
 }

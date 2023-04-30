@@ -1,10 +1,13 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:formz/formz.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:tads_app/generated/locale_keys.g.dart';
 import 'package:tads_app/src/config/constants/constants.dart';
+import 'package:tads_app/src/config/routes/app_routes.dart';
 import 'package:tads_app/src/core/local_source/local_storage.dart';
+import 'package:tads_app/src/features/common/presentation/components/buttons/app_outlined_button.dart';
 import 'package:tads_app/src/features/common/presentation/dialogs/settings_dialog.dart';
 import 'package:tads_app/src/features/profile/presentation/blocs/profile_bloc.dart';
 import 'package:tads_app/src/features/profile/presentation/widgets/user_info_widget.dart';
@@ -32,7 +35,13 @@ class _ProfilePageState extends State<ProfilePage>
     super.build(context);
     return BlocProvider(
       create: (context) => bloc,
-      child: BlocBuilder<ProfileBloc, ProfileState>(
+      child: BlocConsumer<ProfileBloc, ProfileState>(
+        listener: (context, state) {
+          if (state.statusGetUser.isFailure) {
+            ScaffoldMessenger.of(context)
+                .showSnackBar(SnackBar(content: Text(state.errorMessage)));
+          }
+        },
         builder: (context, state) {
           return Scaffold(
             appBar: AppBar(
@@ -92,6 +101,7 @@ class _ProfilePageState extends State<ProfilePage>
                     ),
                     kHeight16,
                     UserInfoWidget(
+                      status: state.statusGetUser,
                       firstName: state.user.firstName,
                       lastName: state.user.lastName,
                       phone: state.user.phone,
@@ -122,6 +132,16 @@ class _ProfilePageState extends State<ProfilePage>
                       phoneVerified: state.user.phoneVerified,
                       verifyEmail: () {},
                       verifyPhone: () {},
+                    ),
+                    kHeight24,
+                    AppOutlinedButton(
+                      onTap: () => LocalStorage.clearProfile().then((value) =>
+                          Navigator.of(context).pushNamedAndRemoveUntil(
+                              AppRoutes.login, (route) => false)),
+                      text: LocaleKeys.exit.tr(),
+                      size: const Size.fromHeight(40),
+                      textColor: Colors.red,
+                      borderColor: Colors.red,
                     ),
                   ],
                 ),

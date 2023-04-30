@@ -28,5 +28,7 @@ abstract class  LocaleKeys {
   static const first_name = 'first_name';
   static const last_name = 'last_name';
   static const verify = 'verify';
+  static const exit = 'exit';
+  static const unable_to_load = 'unable_to_load';
 
 }
