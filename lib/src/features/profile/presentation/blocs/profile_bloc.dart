@@ -4,6 +4,7 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:formz/formz.dart';
 import 'package:tads_app/src/features/profile/data/repositories/profile_repo_impl.dart';
+import 'package:tads_app/src/features/profile/domain/entities/user_entity.dart';
 import 'package:tads_app/src/features/profile/domain/repositories/profile_repository.dart';
 
 part 'profile_event.dart';
@@ -22,7 +23,10 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     emit(state.copWith(statusGetUser: FormzSubmissionStatus.inProgress));
     var res = await repo.getUser();
     if (res.isRight) {
-      emit(state.copWith(statusGetUser: FormzSubmissionStatus.success));
+      emit(state.copWith(
+        statusGetUser: FormzSubmissionStatus.success,
+        user: res.right,
+      ));
     } else {
       emit(state.copWith(
         statusGetUser: FormzSubmissionStatus.failure,
@@ -30,7 +34,6 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
       ));
     }
   }
-
 
   void dispose() {
     repo.dispose();

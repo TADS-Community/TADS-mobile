@@ -17,6 +17,7 @@ class AppTheme {
     appBarTheme: AppBarTheme(
       color: Colors.blue,
       elevation: 2,
+      centerTitle: false,
       actionsIconTheme: const IconThemeData(color: Colors.white),
       titleTextStyle: GoogleFonts.spaceMono(
         color: Colors.white,
@@ -109,6 +110,7 @@ class AppTheme {
     appBarTheme: AppBarTheme(
       surfaceTintColor: const Color(0xff111111),
       elevation: 2,
+      centerTitle: false,
       actionsIconTheme: const IconThemeData(color: Colors.white),
       titleTextStyle: GoogleFonts.spaceMono(
         color: Colors.white,

@@ -2,7 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:tads_app/generated/locale_keys.g.dart';
 import 'package:tads_app/src/features/main/presentation/pages/main_page.dart';
-import 'package:tads_app/src/features/profile/presetation/pages/profile_page.dart';
+import 'package:tads_app/src/features/profile/presentation/pages/profile_page.dart';
 import 'package:tads_app/src/features/search/presentation/pages/search_page.dart';
 
 class HomePage extends StatefulWidget {
